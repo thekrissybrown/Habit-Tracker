@@ -59,6 +59,7 @@ Future Screenshots of the application will be found in the `/media` folder, show
 - **Krissy Brown**: Habit class implementation, core functionality design
 - **Mustafa Almajmaie**: HabitCollection class, data management, persistence logic
 - **Michael Broniek**: StreakAnalyzer class, UI development, testing framework
+- **Kat Nunez**: TBD
 
 ## Acknowledgments
 
