@@ -56,10 +56,41 @@ Future Screenshots of the application will be found in the `/media` folder, show
 - Custom notification scheduling
 
 ## Contributors
-- **Krissy Brown**: Habit class implementation, core functionality design
-- **Mustafa Almajmaie**: HabitCollection class, data management, persistence logic
-- **Michael Broniek**: StreakAnalyzer class, UI development, testing framework
-- **Kat Nunez**: TBD
+- **Krissy Brown**: User Interface & Integration: HabitTrackerUI.java, Main.java (JavaFX entry point)
+- **Mustafa Almajmaie**: Collection Management & Persistence: HabitCollection.java, DataManager.java
+- **Michael Broniek**: Habit Core & Data Model: Habit.java, HabitCategory.java
+- **Kat Nunez**: Analytics & Achievement System: StreakAnalyzer.java, AchievementSystem.java
+
+## Detailed Roles & Responsibilities
+
+### Krissy Brown – User Interface & Integration
+- Designed and implemented the graphical user interface (GUI) using JavaFX
+- Developed `HabitTrackerUI.java` to provide a user-friendly dashboard and calendar view
+- Managed `Main.java` to handle application startup and scene switching
+- Integrated all modules into a cohesive application experience
+- Participated in UI/UX testing and documentation
+
+### Mustafa Almajmaie – Collection Management & Persistence
+- Developed `HabitCollection.java` to manage the habit list using ArrayList with sorting/filtering
+- Built `DataManager.java` to handle saving/loading habits with file I/O
+- Ensured data persistence across sessions using Java serialization (or alternative method)
+- Wrote unit tests to validate data integrity and file operations
+- Documented methods and collaborated on error handling
+
+### Michael Broniek – Habit Core & Data Model
+- Created `Habit.java` to represent individual habit objects with attributes like name, streak, and frequency
+- Implemented `HabitCategory.java` to organize habits into groups
+- Wrote constructors, setters/getters, and helper methods for manipulating habit data
+- Developed unit tests to validate core class functionality
+- Documented model logic and assisted with structural planning
+
+### Kat Nunez – Analytics & Achievement System
+- Implemented `StreakAnalyzer.java` to calculate current streaks, completion rates, and historical performance
+- Developed `AchievementSystem.java` to award badges and track milestones
+- Integrated analytics with UI components for real-time feedback
+- Wrote unit tests for streak logic and achievement conditions
+- Collaborated on feature planning and progress tracking
+
 
 ## Acknowledgments
 
