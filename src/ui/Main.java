@@ -16,3 +16,7 @@ public class Main extends Application {
     }
 }
 
+// ✅ The public class name must match the file name, e.g., Main.java
+// ✅ The main method is the entry point of the application
+// ✅ The start method is overridden to set up the primary stage (window) of the JavaFX application
+// ✅ The launch method starts the JavaFX application
