@@ -11,6 +11,7 @@ public class Habit {
     private HabitCategory category;
     private LocalDate creationDate;
     private ArrayList<LocalDate> completionDates;
+    private LocalDate lastCompletionDate;
     private int currentStreak;
     private int longestStreak;
 
@@ -20,7 +21,8 @@ public class Habit {
         this.description = description;
         this.category = category;
         this.creationDate = LocalDate.now();
-        this.completionDates = new ArrayList<>();
+        this.lastCompletionDate = null;
+        this.completionDates = new ArrayList<LocalDate>();
         this.currentStreak = 0;
         this.longestStreak = 0;
     }
@@ -29,4 +31,16 @@ public class Habit {
     public void markCompleteNow(){
         completionDates.add(LocalDate.now());
     }
+
+    // Method to update streaks
+    public void updateStreak(){
+        // First completion of a habit will simply do this
+        if (lastCompletionDate == null){
+            currentStreak = 1;
+        } else{
+            
+        }
+
+    }
+
 }
