@@ -24,7 +24,7 @@ public class HabitTrackerUI {
     @FXML
     private Button addHabitButton;
 
-    private ObservableList<String> habitNames = FXCollections.observableArrayList();
+    private final ObservableList<String> habitNames = FXCollections.observableArrayList();
 
     /**
      * Populates the dashboard list with habit names from the HabitCollection.

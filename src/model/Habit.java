@@ -1,5 +1,6 @@
 // Placeholder class
 
+package model;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
