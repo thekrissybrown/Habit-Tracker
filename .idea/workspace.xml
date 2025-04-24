@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5f6c4c4f-2a16-4b1a-997b-1ba847346376" name="Changes" comment="Add source folder configuration to project module">
-      <change beforePath="$PROJECT_DIR$/Main.java" beforeDir="false" />
+    <list default="true" id="5f6c4c4f-2a16-4b1a-997b-1ba847346376" name="Changes" comment="Implement AddHabitController and update Main class for Habit Tracker UI">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,6 +82,13 @@
         "number": 1
       },
       "lastSeen": 1745500235878
+    },
+    {
+      "id": {
+        "id": "PR_kwDOOSZ1A86TxFCU",
+        "number": 2
+      },
+      "lastSeen": 1745502416585
     }
   ]
 }]]></component>
@@ -116,6 +124,7 @@
   "keyToString": {
     "Application.HabitTracker.executor": "Debug",
     "DefaultGoTemplateProperty": "Go File",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.go.formatter.settings.were.checked": "true",
@@ -160,7 +169,6 @@
   <component name="RunManager">
     <configuration name="HabitTracker" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="ui.Main" />
-      <module name="Habit-Tracker" />
       <option name="VM_PARAMETERS" value="--module-path &quot;C:\dev\javafx-sdk-24.0.1\lib&quot; --add-modules javafx.controls,javafx.fxml " />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -187,7 +195,8 @@
       <workItem from="1745089902113" duration="749000" />
       <workItem from="1745090694991" duration="357000" />
       <workItem from="1745364293043" duration="7404000" />
-      <workItem from="1745498961042" duration="2023000" />
+      <workItem from="1745498961042" duration="2753000" />
+      <workItem from="1745502391816" duration="78000" />
     </task>
     <task id="LOCAL-00001" summary="Add project configuration files and .gitignore">
       <option name="closed" value="true" />
@@ -237,7 +246,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745499779623</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Add source folder configuration to project module">
+      <option name="closed" value="true" />
+      <created>1745501096770</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1745501096770</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
