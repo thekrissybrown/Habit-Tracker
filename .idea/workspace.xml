@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5f6c4c4f-2a16-4b1a-997b-1ba847346376" name="Changes" comment="Add source folder configuration to project module">
+      <change beforePath="$PROJECT_DIR$/Main.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+      <option value="module" />
+      <option value="repository" />
+    </option>
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="DependenciesAnalyzeManager">
+    <option name="forwardDirection" value="false" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="krissy-ui-integration" />
+              </list>
+            </value>
+          </entry>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="origin/krissy-ui-integration" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="krissy-ui-integration" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;history&quot;: [
+    {
+      &quot;state&quot;: &quot;MERGED&quot;,
+      &quot;author&quot;: &quot;kat-nunez&quot;
+    },
+    {
+      &quot;state&quot;: &quot;CLOSED&quot;,
+      &quot;author&quot;: &quot;thekrissybrown&quot;
+    }
+  ],
+  &quot;lastFilter&quot;: {}
+}</component>
+  <component name="GitHubPullRequestState"><![CDATA[{
+  "prStates": [
+    {
+      "id": {
+        "id": "PR_kwDOOSZ1A86TBz85",
+        "number": 1
+      },
+      "lastSeen": 1745500235878
+    }
+  ]
+}]]></component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="dbf24302-0496-417e-b607-355427945ce6" />
+  </component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/thekrissybrown/Habit-Tracker.git&quot;,
+    &quot;accountId&quot;: &quot;dbf24302-0496-417e-b607-355427945ce6&quot;
+  }
+}</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/ui/HabitTrackerUI.java" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="PhpDebugGeneral" listening_started="true" />
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2vu9WcKi8zWe1v1aGuE7iIcVArq" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.HabitTracker.executor": "Debug",
+    "DefaultGoTemplateProperty": "Go File",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "git-widget-placeholder": "krissy-ui-integration",
+    "go.import.settings.migrated": "true",
+    "ignore.virus.scanning.warn.message": "true",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "C:/Users/c0dek/IdeaProjects/Habit-Tracker",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "configurable.group.tools",
+    "settings.editor.splitter.proportion": "0.22516556",
+    "two.files.diff.last.used.folder": "C:/Users/c0dek/IdeaProjects/Habit-Tracker",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\c0dek\IdeaProjects\Habit-Tracker" />
+      <recent name="C:\Users\c0dek\IdeaProjects\Habit-Tracker\src\ui" />
+      <recent name="C:\Users\c0dek\IdeaProjects\Habit-Tracker\src" />
+      <recent name="C:\Users\c0dek\IdeaProjects\Habit-Tracker\src\src" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\c0dek\IdeaProjects\Habit-Tracker\src\ui" />
+      <recent name="C:\Users\c0dek\IdeaProjects\Habit-Tracker\src" />
+      <recent name="C:\Users\c0dek\IdeaProjects\Habit-Tracker/src" />
+      <recent name="C:\Users\c0dek\IdeaProjects\Habit-Tracker" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="src" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="HabitTracker" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="ui.Main" />
+      <module name="Habit-Tracker" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\dev\javafx-sdk-24.0.1\lib&quot; --add-modules javafx.controls,javafx.fxml " />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.23774.435" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5f6c4c4f-2a16-4b1a-997b-1ba847346376" name="Changes" comment="" />
+      <created>1744984124834</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1744984124834</updated>
+      <workItem from="1744984126504" duration="4253000" />
+      <workItem from="1745021717151" duration="468000" />
+      <workItem from="1745086058152" duration="1540000" />
+      <workItem from="1745089902113" duration="749000" />
+      <workItem from="1745090694991" duration="357000" />
+      <workItem from="1745364293043" duration="7404000" />
+      <workItem from="1745498961042" duration="2023000" />
+    </task>
+    <task id="LOCAL-00001" summary="Add project configuration files and .gitignore">
+      <option name="closed" value="true" />
+      <created>1744985141916</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1744985141916</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Add project run configuration and library setup for Habit Tracker">
+      <option name="closed" value="true" />
+      <created>1744986794511</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1744986794511</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Add project run configuration and library setup for Habit Tracker">
+      <option name="closed" value="true" />
+      <created>1744986927221</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1744986927221</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Add source folder configuration to project module">
+      <option name="closed" value="true" />
+      <created>1744987777107</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1744987777107</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Add source folder configuration to project module">
+      <option name="closed" value="true" />
+      <created>1745499728953</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1745499728955</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Add source folder configuration to project module">
+      <option name="closed" value="true" />
+      <created>1745499779623</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1745499779623</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="main" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="false" />
+                </map>
+              </option>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Add project configuration files and .gitignore" />
+    <MESSAGE value="Add project run configuration and library setup for Habit Tracker" />
+    <MESSAGE value="Add source folder configuration to project module" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add source folder configuration to project module" />
+  </component>
+  <component name="VgoProject">
+    <settings-migrated>true</settings-migrated>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand>
+      <path>
+        <item name="Habit-Tracker" type="b2602c69:ProjectViewProjectNode" />
+        <item name="dir{file://C:/Users/c0dek/IdeaProjects/Habit-Tracker}" type="462c0819:PsiDirectoryNode" />
+      </path>
+      <path>
+        <item name="Habit-Tracker" type="b2602c69:ProjectViewProjectNode" />
+        <item name="dir{file://C:/Users/c0dek/IdeaProjects/Habit-Tracker}" type="462c0819:PsiDirectoryNode" />
+        <item name="dir{file://C:/Users/c0dek/IdeaProjects/Habit-Tracker/src}" type="462c0819:PsiDirectoryNode" />
+      </path>
+      <path>
+        <item name="Habit-Tracker" type="b2602c69:ProjectViewProjectNode" />
+        <item name="dir{file://C:/Users/c0dek/IdeaProjects/Habit-Tracker}" type="462c0819:PsiDirectoryNode" />
+        <item name="dir{file://C:/Users/c0dek/IdeaProjects/Habit-Tracker/src}" type="462c0819:PsiDirectoryNode" />
+        <item name="dir{file://C:/Users/c0dek/IdeaProjects/Habit-Tracker/src/ui}" type="462c0819:PsiDirectoryNode" />
+      </path>
+    </expand>
+    <select />
+  </component>
+</project>
