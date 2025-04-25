@@ -1,3 +1,8 @@
+// Habit Tracker Project
+// Author: Michal Broniek
+// Date: 04-25-25
+// Class for creating habits, returning, adding current/past completion dates
+
 package model;
 
 package model;
