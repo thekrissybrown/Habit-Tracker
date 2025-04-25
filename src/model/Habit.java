@@ -40,5 +40,21 @@ public class Habit {
         return completionDates;
     }
 
+    // Adds current date as a completion date
+    public void markCompletedToday(){
+        // Need to add if it's been completed already.
+        completionDates.add(LocalDate.now());
+    }
 
+    // Adds a past date to completion dates
+    public void markCompletedPast(LocalDate date){
+        // Need to add if it's been completed on that date already.
+        completionDates.add(date);
+    }
+
+    @Override
+    public String toString(){
+        return String.format("Habit name: %s \n Habit description: %s \n Habit category: %s \n Creation date: %s \n Times completed: %s",
+                name, description, category.getName(), creationDate, completionDates.size());
+    }
 }
