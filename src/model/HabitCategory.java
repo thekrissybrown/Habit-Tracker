@@ -1,3 +1,8 @@
+// Habit Tracker Project
+// Author: Michal Broniek
+// Date: 04-25-25
+// Class for creating habit categories and returning habit category information
+
 package model;
 
 public class HabitCategory {
