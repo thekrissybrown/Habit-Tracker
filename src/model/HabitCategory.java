@@ -21,6 +21,6 @@ public class HabitCategory {
 
     @Override
     public String toString(){
-        return "Category " + name + " " + description;
+        return String.format("Name: %s \n Description: %s", name, description);
     }
 }
