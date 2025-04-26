@@ -45,6 +45,19 @@ public class Habit {
         return completionDates;
     }
 
+    // Setters for Habits (In the case of updating after it has been added)
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public void setDescription(String description){
+        this.description = description;
+    }
+
+    public void setCategory(HabitCategory category){
+        this.category = category;
+    }
+
     // Adds current date as a completion date
     // Checks if the date has already been added to the list.
     public void markCompletedToday(){
