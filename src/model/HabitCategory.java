@@ -5,7 +5,6 @@
 
 package model;
 
-package model;
 public class HabitCategory {
     private String name;
     private String description;
