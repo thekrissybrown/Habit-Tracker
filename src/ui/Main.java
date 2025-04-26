@@ -10,7 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import controller.DataManager;
+import controller.FileDataManager;
 import controller.HabitCollection;
 import java.io.IOException;
 import javafx.scene.control.Alert;
@@ -27,7 +27,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         try {
-            habitCollection = DataManager.load();
+            habitCollection = FileDataManager.load();
             loadDashboard(primaryStage);
         } catch (IOException e) {
             showError("Failed to load dashboard UI.", e);
@@ -69,7 +69,7 @@ public class Main extends Application {
      */
     @Override
     public void stop() throws Exception {
-        DataManager.save(habitCollection);
+        FileDataManager.save(habitCollection);
     }
 
     /**
