@@ -15,13 +15,19 @@ public class AddHabitController {
     @FXML
     private TextField habitNameField;
 
+    private Main.HabitCollectionManager habitManager;
+
+    public void setHabitManager(Main.HabitCollectionManager manager) {
+        this.habitManager = manager;
+    }
+
     @FXML
     private void handleSaveHabit() {
         String name = habitNameField.getText().trim();
 
         if (!name.isEmpty()) {
-            Habit newHabit = new Habit(name);
-            Main.habitCollection.addHabit(newHabit);
+            Habit newHabit = new Habit(name, "", null);
+            habitManager.getHabitCollection().addHabit(newHabit);
 
             Stage stage = (Stage) habitNameField.getScene().getWindow();
             stage.close();

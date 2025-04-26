@@ -1,47 +1,72 @@
-// Project Name: Habit Tracker System
-// Author: Mustafa Almajmaie
-// Date: 2025-04-21
-//This class manages a list of Habit objects, providing functionality for adding, removing, and retrieving habits.
-
-
 package controller;
 
 import model.Habit;
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.Objects;
 
 public class HabitCollection {
-
-    private List<Habit> habits;
+    private final List<Habit> habits;
 
     /**
-     * Default constructor. Initializes the habit list.
+     * Default constructor. Initializes the habit list with a thread-safe implementation.
      */
     public HabitCollection() {
-        habits = new ArrayList<>();
+        habits = new CopyOnWriteArrayList<>();
     }
 
     /**
      * Adds a new habit to the collection.
+     *
      * @param habit the habit to add
+     * @throws IllegalArgumentException if the habit is null or already exists in the collection
      */
     public void addHabit(Habit habit) {
-        // to be implemented
+        Objects.requireNonNull(habit, "Habit cannot be null");
+        if (habits.contains(habit)) {
+            throw new IllegalArgumentException("Habit already exists in the collection");
+        }
+        habits.add(habit);
     }
 
     /**
      * Removes a habit from the collection.
+     *
      * @param habit the habit to remove
+     * @throws IllegalArgumentException if the habit is null or doesn't exist in the collection
      */
     public void removeHabit(Habit habit) {
-        // to be implemented
+        Objects.requireNonNull(habit, "Habit cannot be null");
+        if (!habits.remove(habit)) {
+            throw new IllegalArgumentException("Habit not found in the collection");
+        }
     }
 
     /**
-     * Returns the list of all habits.
-     * @return list of habits
+     * Returns an unmodifiable view of all habits in the collection.
+     *
+     * @return unmodifiable list of habits
      */
     public List<Habit> getAllHabits() {
-        return habits;
+        return Collections.unmodifiableList(habits);
+    }
+
+    /**
+     * Returns the number of habits in the collection.
+     *
+     * @return the size of the habit collection
+     */
+    public int getSize() {
+        return habits.size();
+    }
+
+    /**
+     * Checks if the collection is empty.
+     *
+     * @return true if the collection contains no habits, false otherwise
+     */
+    public boolean isEmpty() {
+        return habits.isEmpty();
     }
 }
