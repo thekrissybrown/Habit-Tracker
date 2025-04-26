@@ -6,5 +6,42 @@
 
 package controller;
 
+import model.Habit;
+import java.util.ArrayList;
+import java.util.List;
+
 public class HabitCollection {
+
+    private List<Habit> habits;
+
+    /**
+     * Default constructor. Initializes the habit list.
+     */
+    public HabitCollection() {
+        habits = new ArrayList<>();
+    }
+
+    /**
+     * Adds a new habit to the collection.
+     * @param habit the habit to add
+     */
+    public void addHabit(Habit habit) {
+        // to be implemented
+    }
+
+    /**
+     * Removes a habit from the collection.
+     * @param habit the habit to remove
+     */
+    public void removeHabit(Habit habit) {
+        // to be implemented
+    }
+
+    /**
+     * Returns the list of all habits.
+     * @return list of habits
+     */
+    public List<Habit> getAllHabits() {
+        return habits;
+    }
 }
