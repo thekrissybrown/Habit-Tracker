@@ -33,7 +33,10 @@ public class FileDataManager<T> implements DataPersistence<T> {
     public FileDataManager(Class<T> dataType) {
         this(Path.of(DEFAULT_DATA_DIRECTORY), dataType);
     }
-    
+
+    public static HabitCollection load() {
+    }
+
     @Override
     public void saveData(T data) throws IOException {
         // Implementation details
