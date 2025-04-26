@@ -11,41 +11,80 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import controller.DataManager;
-import model.HabitCollection;
+import controller.HabitCollection;
+import java.io.IOException;
+import controller.DataLoadException;
+import javafx.scene.control.Alert;
+import javafx.application.Platform;
 
 public class Main extends Application {
-
-    public static HabitCollection habitCollection;
-
-    /**
-     * Starts the JavaFX app and loads the dashboard UI. Habits are loaded from file.
-     * @param primaryStage the main app window
-     * @throws Exception if FXML fails to load
-     */
+    private final HabitCollectionManager habitManager;
+    
+    public Main() {
+        this.habitManager = HabitCollectionManager.getInstance();
+    }
+    
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        habitCollection = DataManager.load();
-
-        Parent root = FXMLLoader.load(getClass().getResource("/ui/dashboard.fxml"));
+    public void start(Stage primaryStage) {
+        try {
+            initializeHabitCollection();
+            loadAndShowMainScene(primaryStage);
+        } catch (IOException e) {
+            handleStartupError("Failed to load UI", e);
+        } catch (DataLoadException e) {
+            handleStartupError("Failed to load habits", e);
+        }
+    }
+    
+    private void initializeHabitCollection() throws DataLoadException {
+        try {
+            habitManager.initialize(DataManager.load());
+        } catch (Exception e) {
+            throw new DataLoadException("Failed to load habit data", e);
+        }
+    }
+    
+    private void loadAndShowMainScene(Stage primaryStage) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/dashboard.fxml"));
+        Parent root = loader.load();
+        
+        // Inject the habitManager into the controller
+        HabitTrackerUI controller = loader.getController();
+        controller.setHabitManager(habitManager);
+        
         primaryStage.setTitle("Habit Tracker Dashboard");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
-
-    /**
-     * Saves the habit collection when the application closes.
-     * @throws Exception if saving fails
-     */
-    @Override
-    public void stop() throws Exception {
-        DataManager.save(habitCollection);
+    
+    private void handleStartupError(String message, Exception e) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Startup Error");
+        alert.setHeaderText(message);
+        alert.setContentText(e.getMessage());
+        alert.showAndWait();
+        Platform.exit();
     }
-
-    /**
-     * Launches the application.
-     * @param args command-line args
-     */
-    public static void main(String[] args) {
-        launch(args);
+    
+    // Singleton manager class for HabitCollection
+    public static class HabitCollectionManager {
+        private static final HabitCollectionManager INSTANCE = new HabitCollectionManager();
+        private HabitCollection habitCollection;
+        
+        private HabitCollectionManager() {
+            this.habitCollection = new HabitCollection();
+        }
+        
+        public static HabitCollectionManager getInstance() {
+            return INSTANCE;
+        }
+        
+        public void initialize(HabitCollection loadedCollection) {
+            this.habitCollection = loadedCollection != null ? loadedCollection : new HabitCollection();
+        }
+        
+        public HabitCollection getHabitCollection() {
+            return habitCollection;
+        }
     }
 }

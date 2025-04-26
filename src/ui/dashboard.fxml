@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.AddHabitController"
+      spacing="10" alignment="CENTER" prefWidth="300" prefHeight="200">
+
+<Label text="Add a New Habit" />
+<TextField fx:id="habitNameField" promptText="Enter habit name" />
+<Button text="Save Habit" onAction="#handleSaveHabit" />
+
+</VBox>

@@ -4,7 +4,6 @@
 // Controller for the dashboard scene. Manages the display of tracked habits and transitions to the add habit form.
 
 package ui;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -24,10 +23,11 @@ public class HabitTrackerUI {
     @FXML
     private Button addHabitButton;
 
-    private final ObservableList<String> habitNames = FXCollections.observableArrayList();
+    private ObservableList<String> habitNames = FXCollections.observableArrayList();
 
     /**
-     * Populates the dashboard list with habit names from the HabitCollection.
+     * Initializes the UI with data from the HabitCollection.
+     * Populates the ListView with habit names.
      */
     @FXML
     public void initialize() {
@@ -38,12 +38,15 @@ public class HabitTrackerUI {
     }
 
     /**
-     * Loads and displays the addHabit.fxml view in a new window.
-     * @throws Exception if loading the FXML fails
+     * Opens a new window to add a habit using addHabit.fxml.
+     *
+     * @throws Exception if the FXML file cannot be loaded
      */
     @FXML
     private void handleAddHabitButton() throws Exception {
-        Parent addHabitView = FXMLLoader.load(getClass().getResource("/ui/addHabit.fxml"));
+        Parent addHabitView = FXMLLoader.load(
+                getClass().getResource("/ui/addHabit.fxml")
+        );
         Stage stage = new Stage();
         stage.setTitle("Add New Habit");
         stage.setScene(new Scene(addHabitView));
