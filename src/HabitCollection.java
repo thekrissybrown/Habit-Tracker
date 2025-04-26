@@ -5,7 +5,7 @@
 //              HabitCollection manages a list of Habit objects, while DataManager handles 
 //              reading and writing Habit data to a file.
 
-package HabitCollection
+package controller;
 
 import java.util.ArrayList;
 
