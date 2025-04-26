@@ -72,7 +72,7 @@ Future Screenshots of the application will be found in the `/media` folder, show
 
 ### Mustafa Almajmaie – Collection Management & Persistence
 - Developed `HabitCollection.java` to manage the habit list using ArrayList with sorting/filtering
-- Built `DataManager.java` to handle saving/loading habits with file I/O
+- Built `FileDataManager.java` to handle saving/loading habits with file I/O
 - Ensured data persistence across sessions using Java serialization (or alternative method)
 - Wrote unit tests to validate data integrity and file operations
 - Documented methods and collaborated on error handling
