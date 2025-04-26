@@ -1,60 +1,51 @@
+// Project Name: Habit Tracker System
+// Author: Mustafa Almajmaie
+// Date: 2025-04-25
+// Description: This code is part of a habit tracker system that allows users to track their habits.
+
 package controller;
 
-import java.io.IOException;
+import model.HabitCollection;
+
+import java.io.*;
+import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /**
- * Manages persistence of habit data using file storage.
- * @param <T> The type of data being managed
+ * Handles reading and writing habit data using Java object serialization.
  */
-public class FileDataManager<T> implements DataPersistence<T> {
-    private static final String DEFAULT_DATA_DIRECTORY = "data";
-    private static final String FILE_EXTENSION = ".json";
-    
-    private final Path storagePath;
-    private final Class<T> dataType;
-    
+public class FileDataManager {
+
+    private static final Path DATA_FILE_PATH = Paths.get("data", "habits.ser");
+
     /**
-     * Creates a new FileDataManager with specified storage path and data type.
-     *
-     * @param storagePath the directory path for data storage
-     * @param dataType the class of data being managed
+     * Loads the HabitCollection from file, or returns a new one if the file doesn't exist.
+     * @return HabitCollection loaded from disk
+     * @throws IOException if reading fails
+     * @throws ClassNotFoundException if deserialization fails
      */
-    public FileDataManager(Path storagePath, Class<T> dataType) {
-        this.storagePath = storagePath;
-        this.dataType = dataType;
+    public static HabitCollection load() throws IOException, ClassNotFoundException {
+        if (!Files.exists(DATA_FILE_PATH)) {
+            return new HabitCollection(); // empty collection if nothing saved yet
+        }
+
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(DATA_FILE_PATH.toFile()))) {
+            return (HabitCollection) in.readObject();
+        }
     }
-    
+
     /**
-     * Creates a new FileDataManager with default storage path.
-     *
-     * @param dataType the class of data being managed
+     * Saves the HabitCollection to file using object serialization.
+     * @param habitCollection the data to save
+     * @throws IOException if writing fails
      */
-    public FileDataManager(Class<T> dataType) {
-        this(Path.of(DEFAULT_DATA_DIRECTORY), dataType);
-    }
+    public static void save(HabitCollection habitCollection) throws IOException {
+        // Make sure the data directory exists
+        Files.createDirectories(DATA_FILE_PATH.getParent());
 
-    public static HabitCollection load() {
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(DATA_FILE_PATH.toFile()))) {
+            out.writeObject(habitCollection);
+        }
     }
-
-    @Override
-    public void saveData(T data) throws IOException {
-        // Implementation details
-    }
-    
-    @Override
-    public T loadData() throws IOException {
-        // Implementation details
-        return null;
-    }
-}
-
-/**
- * Interface defining data persistence operations.
- *
- * @param <T> The type of data being persisted
- */
-interface DataPersistence<T> {
-    void saveData(T data) throws IOException;
-    T loadData() throws IOException;
 }

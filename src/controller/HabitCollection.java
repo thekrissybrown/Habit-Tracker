@@ -1,3 +1,8 @@
+// Project Name: Habit Tracker System
+// Author: Mustafa Almajmaie
+// Date: 2025-04-21
+// This class manages a list of Habit objects with basic add, remove, and retrieve functionality.
+
 package controller;
 
 import model.Habit;
@@ -5,8 +10,15 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.Objects;
+import java.io.Serializable;
 
-public class HabitCollection {
+/**
+ * Represents a collection of Habit objects with basic management functionality.
+ */
+public class HabitCollection implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     private final List<Habit> habits;
 
     /**

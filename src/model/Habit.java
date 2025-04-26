@@ -5,16 +5,17 @@
 
 package model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class Habit {
+public class Habit implements Serializable { //Added Serializable to allow compatibility with FileDataManager
     private String name;
     private String description;
     private HabitCategory category;
     private LocalDate creationDate;
     private ArrayList<LocalDate> completionDates;
-
+    private static final long serialVersionUID = 1L; // <-- SerialVersionUID for serialization
     // Constructor
     public Habit(String name, String description, HabitCategory category){
         this.name = name;
