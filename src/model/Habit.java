@@ -5,7 +5,6 @@
 
 package model;
 
-package model;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -47,15 +46,21 @@ public class Habit {
     }
 
     // Adds current date as a completion date
+    // Checks if the date has already been added to the list.
     public void markCompletedToday(){
-        // Need to add if it's been completed already.
-        completionDates.add(LocalDate.now());
+        if (completionDates.contains(LocalDate.now())){
+            throw new RuntimeException("Task already completed today.");
+        } else
+            completionDates.add(LocalDate.now());
     }
 
     // Adds a past date to completion dates
+    // Checks if the date has already been added to the list.
     public void markCompletedPast(LocalDate date){
-        // Need to add if it's been completed on that date already.
-        completionDates.add(date);
+        if (completionDates.contains(LocalDate.now())){
+            throw new RuntimeException("Task already completed on that date.");
+        } else
+            completionDates.add(date);
     }
 
     @Override
