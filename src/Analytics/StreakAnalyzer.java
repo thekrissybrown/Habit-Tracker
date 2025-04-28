@@ -1,4 +1,4 @@
-package Analytics;
+package analytics;
 
 /*
  * Habit Tracker

@@ -5,8 +5,8 @@
 <VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.AddHabitController"
       spacing="10" alignment="CENTER" prefWidth="300" prefHeight="200">
 
-    <Label text="Add a New Habit" />
-    <TextField fx:id="habitNameField" promptText="Enter habit name" />
-    <Button text="Save Habit" onAction="#handleSaveHabit" />
+    <Label text="Add a New Habit"/>
+    <TextField fx:id="habitNameField" promptText="Enter habit name"/>
+    <Button text="Save Habit" onAction="#handleSaveHabit"/>
 
 </VBox>
