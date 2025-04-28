@@ -15,19 +15,17 @@ public class AddHabitController {
     @FXML
     private TextField habitNameField;
 
-    private Main.HabitCollectionManager habitManager;
-
-    public void setHabitManager(Main.HabitCollectionManager manager) {
-        this.habitManager = manager;
-    }
-
+    /**
+     * Handles saving a new habit entered by the user.
+     * Adds it directly to the main habit collection.
+     */
     @FXML
     private void handleSaveHabit() {
         String name = habitNameField.getText().trim();
 
         if (!name.isEmpty()) {
-            Habit newHabit = new Habit(name, "", null);
-            habitManager.getHabitCollection().addHabit(newHabit);
+            Habit newHabit = new Habit(name, "", null); // defaults for now
+            Main.habitCollection.addHabit(newHabit);
 
             Stage stage = (Stage) habitNameField.getScene().getWindow();
             stage.close();
