@@ -6,14 +6,13 @@
 package controller;
 
 import model.Habit;
-import java.util.Collections;
-import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.Objects;
+
 import java.io.Serializable;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
- * Represents a collection of Habit objects with basic management functionality.
+ * Manages a collection of Habit objects with add, remove, filter, and sort functionalities.
  */
 public class HabitCollection implements Serializable {
 
@@ -22,52 +21,87 @@ public class HabitCollection implements Serializable {
     private final List<Habit> habits;
 
     /**
-     * Default constructor. Initializes the habit list with a thread-safe implementation.
+     * Initializes an empty habit collection using ArrayList.
      */
     public HabitCollection() {
-        habits = new CopyOnWriteArrayList<>();
+        this.habits = new ArrayList<>();
     }
 
     /**
-     * Adds a new habit to the collection.
+     * Adds a habit to the collection.
      *
      * @param habit the habit to add
-     * @throws IllegalArgumentException if the habit is null or already exists in the collection
+     * @throws IllegalArgumentException if habit is null or already exists
      */
     public void addHabit(Habit habit) {
         Objects.requireNonNull(habit, "Habit cannot be null");
         if (habits.contains(habit)) {
-            throw new IllegalArgumentException("Habit already exists in the collection");
+            throw new IllegalArgumentException("Habit already exists");
         }
         habits.add(habit);
+    }
+
+    /**
+     * Adds multiple habits to the collection.
+     *
+     * @param habitList list of habits to add
+     */
+    public void addAllHabits(Collection<Habit> habitList) {
+        for (Habit habit : habitList) {
+            addHabit(habit);
+        }
     }
 
     /**
      * Removes a habit from the collection.
      *
      * @param habit the habit to remove
-     * @throws IllegalArgumentException if the habit is null or doesn't exist in the collection
+     * @throws IllegalArgumentException if habit is null or not found
      */
     public void removeHabit(Habit habit) {
         Objects.requireNonNull(habit, "Habit cannot be null");
         if (!habits.remove(habit)) {
-            throw new IllegalArgumentException("Habit not found in the collection");
+            throw new IllegalArgumentException("Habit not found");
         }
     }
 
     /**
-     * Returns an unmodifiable view of all habits in the collection.
-     *
-     * @return unmodifiable list of habits
+     * Returns an unmodifiable list of all habits.
      */
     public List<Habit> getAllHabits() {
         return Collections.unmodifiableList(habits);
     }
 
     /**
-     * Returns the number of habits in the collection.
-     *
-     * @return the size of the habit collection
+     * Finds a habit by name (case-insensitive).
+     */
+    public Habit findHabitByName(String name) {
+        return habits.stream()
+                .filter(h -> h.getName().equalsIgnoreCase(name))
+                .findFirst()
+                .orElse(null);
+    }
+
+    /**
+     * Filters habits that contain the provided keyword in their name (case-insensitive).
+     */
+    public List<Habit> filterHabits(String keyword) {
+        return habits.stream()
+                .filter(h -> h.getName().toLowerCase().contains(keyword.toLowerCase()))
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * Returns a new list of habits sorted by name.
+     */
+    public List<Habit> getHabitsSortedByName() {
+        return habits.stream()
+                .sorted(Comparator.comparing(Habit::getName, String.CASE_INSENSITIVE_ORDER))
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * Returns the number of habits.
      */
     public int getSize() {
         return habits.size();
@@ -75,10 +109,15 @@ public class HabitCollection implements Serializable {
 
     /**
      * Checks if the collection is empty.
-     *
-     * @return true if the collection contains no habits, false otherwise
      */
     public boolean isEmpty() {
         return habits.isEmpty();
+    }
+
+    /**
+     * Clears all habits from the collection.
+     */
+    public void clear() {
+        habits.clear();
     }
 }
