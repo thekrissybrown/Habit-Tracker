@@ -21,10 +21,6 @@ public class HabitTrackerUI {
 
     @FXML
     private ListView<String> habitListView;
-
-    @FXML
-    private Button addHabitButton;
-
     private final ObservableList<String> habitNames = FXCollections.observableArrayList();
 
     /**
