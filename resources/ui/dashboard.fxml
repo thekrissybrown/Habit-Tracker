@@ -6,7 +6,10 @@
 
     <top>
         <ToolBar>
-            <Button fx:id="addHabitButton" text="Add Habit" onAction="#handleAddHabitButton"/>
+            <Button
+                    text="Add Habit"
+                    onAction="#handleAddHabitButton"/>
+
         </ToolBar>
     </top>
 
