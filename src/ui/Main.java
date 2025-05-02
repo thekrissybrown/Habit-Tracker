@@ -50,13 +50,12 @@ public class Main extends Application {
         try {
             habitCollection = FileDataManager.load();
             loadDashboard(primaryStage);
-        } catch (ClassNotFoundException e) {
-            showError("Failed to deserialize saved habit data.", e);
         } catch (IOException e) {
             showError("Failed to load dashboard UI.", e);
         } catch (Exception e) {
             showError("Unexpected error occurred.", e);
         }
+
     }
 
     /**
