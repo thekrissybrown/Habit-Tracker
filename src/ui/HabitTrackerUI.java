@@ -11,33 +11,41 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
 import javafx.scene.control.Alert;
+import javafx.scene.layout.TilePane;
 import javafx.stage.Stage;
 import model.Habit;
+
+import java.io.IOException;
 
 public class HabitTrackerUI {
 
     @FXML
-    private ListView<String> habitListView;
+    private TilePane habitTilePane; // ⚠️ Make sure dashboard.fxml uses fx:id="habitTilePane"
+
     private final ObservableList<String> habitNames = FXCollections.observableArrayList();
 
     /**
-     * Initializes the dashboard UI by loading all habit names into the list view.
+     * Initializes the dashboard UI by loading all habits into styled cards.
      */
     @FXML
     public void initialize() {
-        habitNames.clear();
-        for (Habit habit : Main.habitCollection.getAllHabits()) {
-            habitNames.add(habit.getName());
+        try {
+            habitTilePane.getChildren().clear();
+            for (Habit habit : Main.habitCollection.getAllHabits()) {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/HabitCard.fxml"));
+                Parent card = loader.load();
+                HabitCardController controller = loader.getController();
+                controller.setHabit(habit);
+                habitTilePane.getChildren().add(card);
+            }
+        } catch (IOException e) {
+            showError("Failed to load habit cards.", e);
         }
-        habitListView.setItems(habitNames);
     }
 
     /**
      * Opens the "Add Habit" form in a new window.
-     * Shows an alert if the FXML file fails to load.
      */
     @FXML
     private void handleAddHabitButton() {
@@ -46,18 +54,15 @@ public class HabitTrackerUI {
             Stage stage = new Stage();
             stage.setTitle("Add New Habit");
             stage.setScene(new Scene(addHabitView));
-            stage.show();
             stage.centerOnScreen();
-        } catch (Exception e) {
+            stage.show();
+        } catch (IOException e) {
             showError("Failed to open Add Habit form.", e);
         }
     }
 
     /**
      * Displays an error alert dialog with the given message and exception details.
-     *
-     * @param message the error message to show
-     * @param e the exception that occurred
      */
     private void showError(String message, Exception e) {
         Alert alert = new Alert(Alert.AlertType.ERROR);

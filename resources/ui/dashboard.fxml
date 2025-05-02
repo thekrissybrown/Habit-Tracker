@@ -19,7 +19,10 @@
     </top>
 
     <center>
-        <ListView fx:id="habitListView" VBox.vgrow="ALWAYS" />
+        <ScrollPane fitToWidth="true">
+            <TilePane fx:id="habitTilePane" hgap="15" vgap="15" prefColumns="2" padding="20" />
+        </ScrollPane>
     </center>
+
 
 </BorderPane>

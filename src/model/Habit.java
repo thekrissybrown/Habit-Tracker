@@ -82,4 +82,34 @@ public class Habit implements Serializable { //Added Serializable to allow compa
         return String.format("Habit name: %s \n Habit description: %s \n Habit category: %s \n Creation date: %s \n Times completed: %s",
                 name, description, category.getName(), creationDate, completionDates.size());
     }
+
+    public String getStreak() {
+        int streak = 0;
+        LocalDate today = LocalDate.now();
+        for (LocalDate date : completionDates) {
+            if (date.isEqual(today.minusDays(streak))) {
+                streak++;
+            } else {
+                break;
+            }
+        }
+        return String.valueOf(streak);
+
+    }
+
+    public void resetStreak() {
+        // Reset the streak logic
+        completionDates.clear(); // Clear all completion dates
+        // Optionally, you can also reset the creation date or any other properties if needed
+    }
+
+    public void incrementStreak() {
+        // Increment the streak logic
+        LocalDate today = LocalDate.now();
+        if (!completionDates.contains(today)) {
+            completionDates.add(today); // Add today's date to completion dates
+        }
+        // Optionally, you can also update other properties if needed
+    }
+    // Reset the streak logic
 }
