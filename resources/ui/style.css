@@ -55,7 +55,9 @@
     -fx-text-fill: #111827;
 }
 
-.streak-label {
+.habit-streak {
     -fx-font-size: 14px;
     -fx-text-fill: #6B7280;
+}
+
 }

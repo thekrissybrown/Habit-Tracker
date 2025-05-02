@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.effect.Blend?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -9,27 +8,26 @@
       xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="ui.AddHabitController"
       alignment="CENTER"
-      spacing="15.0"
+      spacing="20.0"
       prefWidth="350"
-      prefHeight="250"
+      prefHeight="300"
       styleClass="root">
 
     <padding>
-        <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
+        <Insets top="30" right="30" bottom="30" left="30"/>
     </padding>
 
-    <Label text="Add a New Habit" alignment="CENTER"
-           styleClass="label">
+    <Label text="Add a New Habit" styleClass="label">
+        <font>
+            <Font name="Segoe UI Bold" size="22"/>
+        </font>
     </Label>
 
-    <TextField
-            fx:id="habitNameField"
-            promptText="Enter habit name"
-            styleClass="text-field"/>
+    <TextField fx:id="habitNameField"
+               promptText="Enter habit name"
+               styleClass="text-field"/>
 
-    <Button
-            text="Save Habit"
+    <Button text="Save Habit"
             onAction="#handleSaveHabit"
             styleClass="button"/>
-
 </VBox>

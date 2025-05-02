@@ -12,14 +12,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.layout.TilePane;
 import javafx.stage.Stage;
 import model.Habit;
 
 import java.io.IOException;
+import java.net.URL;
 
 public class HabitTrackerUI {
 
+    public Button addHabitButton;
     @FXML
     private TilePane habitTilePane; // ⚠️ Make sure dashboard.fxml uses fx:id="habitTilePane"
 
@@ -32,17 +35,25 @@ public class HabitTrackerUI {
     public void initialize() {
         try {
             habitTilePane.getChildren().clear();
+
             for (Habit habit : Main.habitCollection.getAllHabits()) {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/HabitCard.fxml"));
+                URL fxmlUrl = getClass().getResource("/ui/HabitCard.fxml");
+                if (fxmlUrl == null) {
+                    throw new IOException("Could not find HabitCard.fxml in /ui/");
+                }
+
+                FXMLLoader loader = new FXMLLoader(fxmlUrl);
                 Parent card = loader.load();
                 HabitCardController controller = loader.getController();
                 controller.setHabit(habit);
                 habitTilePane.getChildren().add(card);
             }
+
         } catch (IOException e) {
             showError("Failed to load habit cards.", e);
         }
     }
+
 
     /**
      * Opens the "Add Habit" form in a new window.
