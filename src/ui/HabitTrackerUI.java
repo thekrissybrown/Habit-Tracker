@@ -47,6 +47,7 @@ public class HabitTrackerUI {
             stage.setTitle("Add New Habit");
             stage.setScene(new Scene(addHabitView));
             stage.show();
+            stage.centerOnScreen();
         } catch (Exception e) {
             showError("Failed to open Add Habit form.", e);
         }

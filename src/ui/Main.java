@@ -77,7 +77,8 @@ public class Main extends Application {
      * @param primaryStage the main stage
      * @throws IOException if FXML cannot be loaded
      */
-    private void loadDashboard(Stage primaryStage) throws IOException {
+    private void loadDashboard(Stage primaryStage)
+            throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/dashboard.fxml"));
         Parent root = loader.load();
 
@@ -94,6 +95,7 @@ public class Main extends Application {
         primaryStage.setTitle("Habit Tracker Dashboard");
         primaryStage.setScene(scene);
         primaryStage.show();
+        primaryStage.centerOnScreen();
     }
 
     // ───────────────────────────────────────────────────────────────
