@@ -42,11 +42,11 @@ public class Main extends Application {
      * @throws IOException if FXML cannot be loaded
      */
     private void loadDashboard(Stage primaryStage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/dashboard.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/dashboard.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         //Modern CSS styling
-        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/ui/style.css").toExternalForm());
 
         primaryStage.setTitle("Habit Tracker Dashboard");
         primaryStage.setScene(scene);
