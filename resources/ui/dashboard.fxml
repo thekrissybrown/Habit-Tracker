@@ -2,19 +2,21 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.HabitTrackerUI">
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.HabitTrackerUI"
+            prefHeight="400.0" prefWidth="300.0" styleClass="root">
 
     <top>
         <ToolBar>
-            <Button
+            <Button fx:id="addHabitButton"
                     text="Add Habit"
-                    onAction="#handleAddHabitButton"/>
+                    onAction="#handleAddHabitButton"
+            />
 
         </ToolBar>
     </top>
 
     <center>
-        <ListView fx:id="habitListView"/>
+        <ListView fx:id="habitListView" VBox.vgrow="ALWAYS" />
     </center>
 
 </BorderPane>
