@@ -12,8 +12,16 @@ import model.Habit;
 
 public class AddHabitController {
 
+    // ───────────────────────────────────────────────────────────────
+    // 💬 FXML Fields
+    // ───────────────────────────────────────────────────────────────
+
     @FXML
     private TextField habitNameField;
+
+    // ───────────────────────────────────────────────────────────────
+    // 💾 Event Handlers
+    // ───────────────────────────────────────────────────────────────
 
     /**
      * Handles saving a new habit entered by the user.
@@ -24,13 +32,14 @@ public class AddHabitController {
         String name = habitNameField.getText().trim();
 
         if (!name.isEmpty()) {
-            Habit newHabit = new Habit(name, "", null); // defaults for now
+            Habit newHabit = new Habit(name, "", null); // description/category left empty for now
             Main.habitCollection.addHabit(newHabit);
 
             Stage stage = (Stage) habitNameField.getScene().getWindow();
             stage.close();
         } else {
             System.out.println("Habit name cannot be empty.");
+            // Optional: You could show an alert here instead of just printing
         }
     }
 }

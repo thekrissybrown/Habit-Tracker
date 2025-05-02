@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import controller.FileDataManager;
 import controller.HabitCollection;
 import java.io.IOException;
+import java.net.URL;
 
 public class Main extends Application {
 
@@ -72,7 +73,14 @@ public class Main extends Application {
         Parent root = loader.load();
 
         Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+
+        // Modern CSS styling with null-safe load
+        URL cssUrl = getClass().getResource("/style.css");
+        if (cssUrl != null) {
+            scene.getStylesheets().add(cssUrl.toExternalForm());
+        } else {
+            System.out.println("Warning: CSS file not found.");
+        }
 
         primaryStage.setTitle("Habit Tracker Dashboard");
         primaryStage.setScene(scene);
