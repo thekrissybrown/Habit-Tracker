@@ -1,0 +1,21 @@
+# Ignore IDE settings
+.idea/
+*.iml
+
+# Ignore build/output folders
+out/
+production/
+
+# Ignore everything in data folder
+/data/*
+# Except habits.csv
+!data/habits.csv
+
+
+# Ignore compiled files
+*.class
+
+# Ignore logs/temp files
+*.log
+*.tmp
+.DS_Store
