@@ -1,50 +1,103 @@
-// Project Name: Habit Tracker System
+// Habit Tracker Project
 // Author: Mustafa Almajmaie
-// Date: 2025-04-25
-// Description: This code is part of a habit tracker system that allows users to track their habits.
+// Date: 2025-04-24
+// Responsible for loading and saving HabitCollection data to a CSV file.
 
 package controller;
 
+import model.Habit;
+import model.HabitCategory;
+
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.util.Arrays;
 
-/**
- * Handles reading and writing habit data using Java object serialization.
- */
-public enum FileDataManager {
-    ;
+public class FileDataManager {
 
-    private static final Path DATA_FILE_PATH = Paths.get("data", "habits.ser");
+    private static final String DATA_FILE = "data/habits.csv";
 
-    /**
-     * Loads the HabitCollection from file, or returns a new one if the file doesn't exist.
-     * @return HabitCollection loaded from disk
-     * @throws IOException if reading fails
-     * @throws ClassNotFoundException if deserialization fails
-     */
-    public static HabitCollection load() throws IOException, ClassNotFoundException {
-        if (!Files.exists(DATA_FILE_PATH)) {
-            return new HabitCollection(); // empty collection if nothing saved yet
+    public static HabitCollection load() {
+        HabitCollection collection = new HabitCollection();
+        File file = new File(DATA_FILE);
+
+        if (!file.exists()) {
+            System.out.println("No existing CSV data file. Starting fresh.");
+            return collection;
         }
 
-        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(DATA_FILE_PATH.toFile()))) {
-            return (HabitCollection) in.readObject();
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(",", -1);
+                if (parts.length >= 5) {
+                    String name = unescapeCSV(parts[0]);
+                    String description = unescapeCSV(parts[1]);
+                    HabitCategory category = new HabitCategory(unescapeCSV(parts[2]));
+                    LocalDate creationDate = LocalDate.parse(parts[3]);
+
+                    Habit habit = new Habit(name, description, category);
+                    habit.setCreationDate(creationDate);
+
+                    if (!parts[4].isEmpty()) {
+                        Arrays.stream(parts[4].split(";"))
+                                .map(LocalDate::parse)
+                                .forEach(habit::markCompletedPast);
+                    }
+
+                    collection.addHabit(habit);
+                }
+            }
+
+        } catch (IOException e) {
+            System.err.println("Error reading CSV file: " + e.getMessage());
+        }
+
+        return collection;
+    }
+
+    public static void save(HabitCollection habitCollection) {
+        File file = new File(DATA_FILE);
+        file.getParentFile().mkdirs();
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+            for (Habit habit : habitCollection.getAllHabits()) {
+                String completedDates = String.join(";",
+                        habit.getCompletionDates().stream()
+                                .map(LocalDate::toString)
+                                .toArray(String[]::new)
+                );
+
+                String line = String.join(",",
+                        escapeCSV(habit.getName()),
+                        escapeCSV(habit.getDescription()),
+                        escapeCSV(habit.getCategory().getName()),
+                        habit.getCreationDate().toString(),
+                        completedDates
+                );
+
+                writer.write(line);
+                writer.newLine();
+            }
+
+        } catch (IOException e) {
+            System.err.println("Error writing CSV file: " + e.getMessage());
         }
     }
 
-    /**
-     * Saves the HabitCollection to file using object serialization.
-     * @param habitCollection the data to save
-     * @throws IOException if writing fails
-     */
-    public static void save(HabitCollection habitCollection) throws IOException {
-        // Make sure the data directory exists
-        Files.createDirectories(DATA_FILE_PATH.getParent());
-
-        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(DATA_FILE_PATH.toFile()))) {
-            out.writeObject(habitCollection);
+    private static String escapeCSV(String value) {
+        if (value.contains(",") || value.contains("\"") || value.contains("\n")) {
+            value = value.replace("\"", "\"\"");
+            return "\"" + value + "\"";
         }
+        return value;
+    }
+
+    private static String unescapeCSV(String value) {
+        if (value.startsWith("\"") && value.endsWith("\"")) {
+            value = value.substring(1, value.length() - 1);
+            return value.replace("\"\"", "\"");
+        }
+        return value;
     }
 }
