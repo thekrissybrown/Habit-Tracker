@@ -6,19 +6,32 @@
 package ui;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import controller.FileDataManager;
 import controller.HabitCollection;
 import java.io.IOException;
-import javafx.scene.control.Alert;
-import javafx.application.Platform;
 
 public class Main extends Application {
 
+    // Global access to the habit collection
     public static HabitCollection habitCollection;
+
+    // ───────────────────────────────────────────────────────────────
+    // 🟢 JavaFX Lifecycle: Entry Point
+    // ───────────────────────────────────────────────────────────────
+
+    /**
+     * JavaFX main method.
+     * @param args command line args
+     */
+    public static void main(String[] args) {
+        launch(args);
+    }
 
     /**
      * Initializes the habit collection and loads the dashboard view.
@@ -37,6 +50,19 @@ public class Main extends Application {
     }
 
     /**
+     * Saves habit collection when app is closed.
+     * @throws Exception if save fails
+     */
+    @Override
+    public void stop() throws Exception {
+        FileDataManager.save(habitCollection);
+    }
+
+    // ───────────────────────────────────────────────────────────────
+    // 📋 Dashboard Loader
+    // ───────────────────────────────────────────────────────────────
+
+    /**
      * Loads the dashboard.fxml layout and shows the main window.
      * @param primaryStage the main stage
      * @throws IOException if FXML cannot be loaded
@@ -44,14 +70,18 @@ public class Main extends Application {
     private void loadDashboard(Stage primaryStage) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/dashboard.fxml"));
         Parent root = loader.load();
+
         Scene scene = new Scene(root);
-        //Modern CSS styling
         scene.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
 
         primaryStage.setTitle("Habit Tracker Dashboard");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+
+    // ───────────────────────────────────────────────────────────────
+    // ❌ Error Handling
+    // ───────────────────────────────────────────────────────────────
 
     /**
      * Shows a fatal startup error alert.
@@ -65,22 +95,5 @@ public class Main extends Application {
         alert.setContentText(e.getMessage());
         alert.showAndWait();
         Platform.exit();
-    }
-
-    /**
-     * Saves habit collection when app is closed.
-     * @throws Exception if save fails
-     */
-    @Override
-    public void stop() throws Exception {
-        FileDataManager.save(habitCollection);
-    }
-
-    /**
-     * JavaFX main method.
-     * @param args command line args
-     */
-    public static void main(String[] args) {
-        launch(args);
     }
 }

@@ -1,34 +1,49 @@
 .root {
     -fx-background-color: #F9FAFB;
+    -fx-font-family: "Segoe UI", sans-serif;
 }
 
+/* Buttons */
 .button {
     -fx-background-color: #4F46E5;
     -fx-text-fill: white;
     -fx-font-weight: bold;
     -fx-background-radius: 12;
     -fx-font-size: 14px;
-    -fx-padding: 10 20 10 20;
+    -fx-padding: 10 20;
+    -fx-cursor: hand;
 }
 
 .button:hover {
     -fx-background-color: #6366F1;
 }
 
+.button:focused {
+    -fx-effect: dropshadow(gaussian, rgba(79, 70, 229, 0.5), 6, 0, 0, 0);
+}
+
+/* Labels */
 .label {
     -fx-text-fill: #111827;
     -fx-font-size: 16px;
 }
 
+/* Text Fields */
 .text-field {
     -fx-background-color: white;
     -fx-border-color: #D1D5DB;
     -fx-border-radius: 8;
     -fx-background-radius: 8;
-    -fx-padding: 6 10 6 10;
+    -fx-padding: 6 10;
     -fx-text-fill: #111827;
 }
 
+.text-field:focused {
+    -fx-border-color: #6366F1;
+    -fx-effect: dropshadow(gaussian, rgba(99, 102, 241, 0.2), 4, 0, 0, 1);
+}
+
+/* ListView */
 .list-view {
     -fx-background-color: white;
     -fx-border-color: #D1D5DB;
