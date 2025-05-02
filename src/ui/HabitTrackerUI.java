@@ -45,7 +45,7 @@ public class HabitTrackerUI {
     @FXML
     private void handleAddHabitButton() throws Exception {
         Parent addHabitView = FXMLLoader.load(
-                getClass().getResource("/ui/addHabit.fxml")
+                getClass().getResource("/addHabit.fxml")
         );
         Stage stage = new Stage();
         stage.setTitle("Add New Habit");

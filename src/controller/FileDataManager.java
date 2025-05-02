@@ -15,7 +15,7 @@ import java.nio.file.Paths;
  */
 public class FileDataManager {
 
-    private static final Path DATA_FILE_PATH = Paths.get("data", "habits.ser");
+    private static final Path DATA_FILE_PATH = Paths.get("data", "habits.csv");
 
     /**
      * Loads the HabitCollection from file, or returns a new one if the file doesn't exist.

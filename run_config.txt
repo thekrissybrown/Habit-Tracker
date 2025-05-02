@@ -1,0 +1,5 @@
+Main class: ui.Main
+VM options: --module-path "C:/dev/javafx-sdk-24.0.1/lib" --add-modules javafx.controls,javafx.fxml --enable-preview
+Working directory: $ProjectFileDir$
+Use classpath of module: Habit-Tracker
+JRE: 24 (Preview features enabled)
