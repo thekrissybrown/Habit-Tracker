@@ -69,13 +69,13 @@ public class Main extends Application {
      * @throws IOException if FXML cannot be loaded
      */
     private void loadDashboard(Stage primaryStage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/dashboard.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ui/dashboard.fxml"));
         Parent root = loader.load();
 
         Scene scene = new Scene(root);
 
-        // Modern CSS styling with null-safe load
-        URL cssUrl = getClass().getResource("/style.css");
+        // Modern CSS styling with a null-safe load
+        URL cssUrl = getClass().getResource("/ui/style.css");
         if (cssUrl != null) {
             scene.getStylesheets().add(cssUrl.toExternalForm());
         } else {
