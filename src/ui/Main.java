@@ -16,6 +16,9 @@ import controller.FileDataManager;
 import controller.HabitCollection;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class Main extends Application {
 
@@ -40,13 +43,19 @@ public class Main extends Application {
      */
     @Override
     public void start(Stage primaryStage) {
+        // 🔍 Debug: Check if data file exists
+        Path filePath = Paths.get("data", "habits.ser");
+        System.out.println("[Debug] habits.ser exists? " + Files.exists(filePath));
+
         try {
             habitCollection = FileDataManager.load();
             loadDashboard(primaryStage);
+        } catch (ClassNotFoundException e) {
+            showError("Failed to deserialize saved habit data.", e);
         } catch (IOException e) {
             showError("Failed to load dashboard UI.", e);
         } catch (Exception e) {
-            showError("Failed to load habit data.", e);
+            showError("Unexpected error occurred.", e);
         }
     }
 
