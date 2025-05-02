@@ -13,7 +13,8 @@ import java.nio.file.Paths;
 /**
  * Handles reading and writing habit data using Java object serialization.
  */
-public class FileDataManager {
+public enum FileDataManager {
+    ;
 
     private static final Path DATA_FILE_PATH = Paths.get("data", "habits.csv");
 
