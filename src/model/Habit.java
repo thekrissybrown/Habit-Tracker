@@ -51,18 +51,6 @@ public class Habit implements Serializable { //Added Serializable to allow compa
 
     public int getStreak() {
         return streak;
-        /*
-        int streak = 0;
-        LocalDate today = LocalDate.now();
-        for (LocalDate date : completionDates) {
-            if (date.isEqual(today.minusDays(streak))) {
-                streak++;
-            } else {
-                break;
-            }
-        }
-        return String.valueOf(streak);
-         */
     }
 
     // Setters for Habits (In the case of updating after it has been added)
@@ -80,20 +68,33 @@ public class Habit implements Serializable { //Added Serializable to allow compa
 
     // Adds current date as a completion date
     // Checks if the date has already been added to the list.
+    // Sorts and checks for a streak
     public void markCompletedToday() {
-        if (completionDates.contains(LocalDate.now())) {
-            throw new RuntimeException("Task already completed today.");
-        } else
-            completionDates.add(LocalDate.now());
+        LocalDate today = LocalDate.now();
+        if (completionDates.contains(today)) {
+            throw new IllegalArgumentException("Habit " + name + " has already been completed today.");
+        } else {
+            completionDates.add(today);
+            completionDates.sort(null);
+            checkStreak();
+        }
     }
 
     // Adds a past date to completion dates
     // Checks if the date has already been added to the list.
+    // Sorts and checks for a streak
     public void markCompletedPast(LocalDate date) {
+        LocalDate today = LocalDate.now();
+        if (date.isAfter(today)) {
+            throw new IllegalArgumentException("Cannot mark completion for a future date.");
+        }
         if (completionDates.contains(date)) {
-            throw new RuntimeException("Task already completed on that date.");
-        } else
+            throw new IllegalArgumentException("Habit " + name + " has already been completed on " + date);
+        } else {
             completionDates.add(date);
+            completionDates.sort(null);
+            checkStreak();
+        }
     }
 
     @Override
@@ -102,19 +103,31 @@ public class Habit implements Serializable { //Added Serializable to allow compa
                 name, description, category.getName(), creationDate, completionDates.size());
     }
 
-    public void resetStreak() {
-        // Reset the streak logic
-        completionDates.clear(); // Clear all completion dates
-        // Optionally, you can also reset the creation date or any other properties if needed
-    }
-
-    public void incrementStreak() {
-        // Increment the streak logic
-        LocalDate today = LocalDate.now();
-        if (!completionDates.contains(today)) {
-            completionDates.add(today); // Add today's date to completion dates
+    // Method to look through list of completions to check if there is a streak
+    public void checkStreak() {
+        if (completionDates.isEmpty()) {
+            streak = 0;
+            return;
         }
-        // Optionally, you can also update other properties if needed
+
+        LocalDate today = LocalDate.now();
+        LocalDate latestCompletion = completionDates.getLast();
+
+        if (!latestCompletion.isEqual(today) && !latestCompletion.isEqual(today.minusDays(1))) {
+            streak = 0;
+            return;
+        }
+
+        int currentStreak = 0;
+        for (int i = completionDates.size() - 1; i >= 0; i--) {
+            LocalDate dateInList = completionDates.get(i);
+            LocalDate expectedDate = latestCompletion.minusDays(currentStreak);
+            if (dateInList.isEqual(expectedDate)) {
+                currentStreak++;
+            } else if (dateInList.isBefore(expectedDate)) {
+                break;
+            }
+        }
+        streak = currentStreak;
     }
-    // Reset the streak logic
 }
