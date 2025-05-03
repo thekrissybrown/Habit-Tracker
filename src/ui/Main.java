@@ -54,10 +54,9 @@ public class Main extends Application {
             showError("Failed to load dashboard UI.", e);
         } catch (Exception e) {
             showError("Unexpected error occurred.", e);
+
         }
-
     }
-
     /**
      * Saves habit collection when app is closed.
      * @throws Exception if save fails

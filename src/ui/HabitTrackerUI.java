@@ -16,17 +16,16 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.TilePane;
 import javafx.stage.Stage;
 import model.Habit;
-
 import java.io.IOException;
 import java.net.URL;
 
 public class HabitTrackerUI {
-
-    public Button addHabitButton;
+    // ───────────────────────────────────────────────────────────────
+    @FXML
+    private Button addHabitButton;
+    // ⚠️ Make sure dashboard.fxml uses fx:id="addHabitButton"
     @FXML
     private TilePane habitTilePane; // ⚠️ Make sure dashboard.fxml uses fx:id="habitTilePane"
-
-    private final ObservableList<String> habitNames = FXCollections.observableArrayList();
 
     /**
      * Initializes the dashboard UI by loading all habits into styled cards.
