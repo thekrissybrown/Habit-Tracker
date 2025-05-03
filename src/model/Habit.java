@@ -13,11 +13,12 @@ public class Habit implements Serializable { //Added Serializable to allow compa
     private String name;
     private String description;
     private HabitCategory category;
-    private LocalDate creationDate;
-    private ArrayList<LocalDate> completionDates;
+    private final LocalDate creationDate;
+    private final ArrayList<LocalDate> completionDates;
     private static final long serialVersionUID = 1L; // <-- SerialVersionUID for serialization
+
     // Constructor
-    public Habit(String name, String description, HabitCategory category){
+    public Habit(String name, String description, HabitCategory category) {
         this.name = name;
         this.description = description;
         this.category = category;
@@ -26,43 +27,43 @@ public class Habit implements Serializable { //Added Serializable to allow compa
     }
 
     // Getters for Habits
-    public String getName(){
+    public String getName() {
         return name;
     }
 
-    public String getDescription(){
+    public String getDescription() {
         return description;
     }
 
-    public HabitCategory getCategory(){
+    public HabitCategory getCategory() {
         return category;
     }
 
-    public LocalDate getCreationDate(){
+    public LocalDate getCreationDate() {
         return creationDate;
     }
 
-    public ArrayList<LocalDate> getCompletionDates(){
+    public ArrayList<LocalDate> getCompletionDates() {
         return completionDates;
     }
 
     // Setters for Habits (In the case of updating after it has been added)
-    public void setName(String name){
+    public void setName(String name) {
         this.name = name;
     }
 
-    public void setDescription(String description){
+    public void setDescription(String description) {
         this.description = description;
     }
 
-    public void setCategory(HabitCategory category){
+    public void setCategory(HabitCategory category) {
         this.category = category;
     }
 
     // Adds current date as a completion date
     // Checks if the date has already been added to the list.
-    public void markCompletedToday(){
-        if (completionDates.contains(LocalDate.now())){
+    public void markCompletedToday() {
+        if (completionDates.contains(LocalDate.now())) {
             throw new RuntimeException("Task already completed today.");
         } else
             completionDates.add(LocalDate.now());
@@ -70,15 +71,15 @@ public class Habit implements Serializable { //Added Serializable to allow compa
 
     // Adds a past date to completion dates
     // Checks if the date has already been added to the list.
-    public void markCompletedPast(LocalDate date){
-        if (completionDates.contains(LocalDate.now())){
+    public void markCompletedPast(LocalDate date) {
+        if (completionDates.contains(date)) {
             throw new RuntimeException("Task already completed on that date.");
         } else
             completionDates.add(date);
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return String.format("Habit name: %s \n Habit description: %s \n Habit category: %s \n Creation date: %s \n Times completed: %s",
                 name, description, category.getName(), creationDate, completionDates.size());
     }
