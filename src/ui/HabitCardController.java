@@ -9,45 +9,63 @@ import model.Habit;
 import java.time.LocalDate;
 
 /**
- * Controller for an enhanced habit card with name, streak, and a toggle action.
+ * Controller for the habit card UI.
+ * Handles marking completion and visualizing streaks.
+ *
+ * Author: Krissy Brown
+ * Date: 2025-04-24
  */
 public class HabitCardController {
+
+    // ───────────────────────────────────────────────────────────────
+    // 💬 FXML Fields
+    // ───────────────────────────────────────────────────────────────
 
     @FXML private Label habitNameLabel;
     @FXML private Label streakLabel;
     @FXML private ToggleButton doneToggle;
     @FXML private Button editButton;
 
+    // ───────────────────────────────────────────────────────────────
+    // 📦 Internal Data
+    // ───────────────────────────────────────────────────────────────
+
     private Habit habit;
 
+    // ───────────────────────────────────────────────────────────────
+    // 📋 Initialization
+    // ───────────────────────────────────────────────────────────────
+
     /**
-     * Sets the habit to be represented by this UI card.
-     * @param habit the habit object
+     * Injects the habit into the UI card and displays its data.
+     * @param habit the habit model object
      */
     public void setHabit(Habit habit) {
         this.habit = habit;
         habitNameLabel.setText(habit.getName());
         updateStreakDisplay();
 
-        // Pre-check if today's date is already in the completion list
+        // Pre-select toggle if already completed today
         doneToggle.setSelected(habit.getCompletionDates().contains(LocalDate.now()));
     }
 
+    // ───────────────────────────────────────────────────────────────
+    // ✅ Event Handlers
+    // ───────────────────────────────────────────────────────────────
+
     @FXML
     private void handleToggleDone() {
-        boolean markedDone = doneToggle.isSelected();
         LocalDate today = LocalDate.now();
 
         try {
-            if (markedDone) {
-                habit.markCompletedToday();  // now handles streak checking internally
+            if (doneToggle.isSelected()) {
+                habit.markCompletedToday(); // Updates streak inside
             } else {
                 habit.getCompletionDates().remove(today);
-                habit.checkStreak(); // re-check streak if undoing completion
+                habit.checkStreak(); // Manually recheck streak after removal
             }
         } catch (IllegalArgumentException e) {
-            // Prevent crash if the user tries to mark a duplicate
-            System.out.println("Toggle failed: " + e.getMessage());
+            System.out.println("Toggle error: " + e.getMessage());
         }
 
         updateStreakDisplay();
@@ -55,10 +73,17 @@ public class HabitCardController {
 
     @FXML
     private void handleEditHabit() {
-        // TODO: Add logic to open an edit habit window (if needed)
-        System.out.println("Edit Habit clicked: " + habit.getName());
+        // Placeholder for future edit UI
+        System.out.println("Edit habit clicked: " + habit.getName());
     }
 
+    // ───────────────────────────────────────────────────────────────
+    // 🔁 Helper Methods
+    // ───────────────────────────────────────────────────────────────
+
+    /**
+     * Updates the streak label visually.
+     */
     private void updateStreakDisplay() {
         streakLabel.setText("\uD83D\uDD25 " + habit.getStreak() + " day streak");
     }

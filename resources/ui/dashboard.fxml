@@ -1,28 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.TilePane?>
-<BorderPane xmlns="http://javafx.com/javafx/23.0.1"
+<BorderPane xmlns="http://javafx.com/javafx/17.0.2"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="ui.HabitTrackerUI"
             prefHeight="600.0"
             prefWidth="800.0"
             styleClass="root">
-
     <top>
         <ToolBar padding="10">
             <Button fx:id="addHabitButton"
                     text="＋ Add Habit"
-                    styleClass="button" onAction="#handleAddHabitButton">
-            </Button>
+                    styleClass="button"
+                    onAction="#handleAddHabitButton"/>
         </ToolBar>
     </top>
-
     <center>
         <ScrollPane fitToWidth="true" fitToHeight="true" padding="10">
             <TilePane fx:id="habitTilePane" hgap="15" vgap="15" prefColumns="2">
@@ -30,7 +26,6 @@
                     <Insets top="10" right="10" bottom="10" left="10"/>
                 </padding>
             </TilePane>
-
         </ScrollPane>
     </center>
 </BorderPane>

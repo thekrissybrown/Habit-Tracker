@@ -2,7 +2,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.layout.HBox?>
 
 <VBox xmlns="http://javafx.com/javafx/23.0.1"
       xmlns:fx="http://javafx.com/fxml/1"
@@ -10,24 +10,32 @@
       alignment="CENTER"
       spacing="20.0"
       prefWidth="350"
-      prefHeight="300"
+      prefHeight="320"
       styleClass="root">
 
     <padding>
         <Insets top="30" right="30" bottom="30" left="30"/>
     </padding>
 
-    <Label text="Add a New Habit" styleClass="label">
-        <font>
-            <Font name="Segoe UI Bold" size="22"/>
-        </font>
-    </Label>
+    <Label text="Add a New Habit" styleClass="label" />
 
     <TextField fx:id="habitNameField"
                promptText="Enter habit name"
-               styleClass="text-field"/>
+               styleClass="text-field" />
 
-    <Button text="Save Habit"
-            onAction="#handleSaveHabit"
-            styleClass="button"/>
+    <Label fx:id="validationLabel"
+           text="Habit name cannot be empty."
+           visible="false"
+           styleClass="error-label" />
+
+    <HBox spacing="10">
+        <Button text="Save Habit"
+                onAction="#handleSaveHabit"
+                defaultButton="true"
+                styleClass="button" />
+        <Button text="Cancel"
+                onAction="#handleCancel"
+                cancelButton="true"
+                styleClass="button secondary" />
+    </HBox>
 </VBox>

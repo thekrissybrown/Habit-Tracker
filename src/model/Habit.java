@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+
 public class Habit implements Serializable { //Added Serializable to allow compatibility with FileDataManager
     private String name;
     private String description;

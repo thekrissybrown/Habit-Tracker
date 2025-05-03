@@ -6,10 +6,18 @@
 package ui;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import model.Habit;
 
+/**
+ * Controller for the Add Habit form.
+ * Handles user input and adds a new habit to the main collection.
+ *
+ * Author: Krissy Brown
+ * Date: 2025-04-24
+ */
 public class AddHabitController {
 
     // ───────────────────────────────────────────────────────────────
@@ -24,22 +32,36 @@ public class AddHabitController {
     // ───────────────────────────────────────────────────────────────
 
     /**
-     * Handles saving a new habit entered by the user.
-     * Adds it directly to the main habit collection.
+     * Handles user clicking "Save Habit".
+     * Creates a new Habit instance and closes the form if valid.
      */
     @FXML
     private void handleSaveHabit() {
         String name = habitNameField.getText().trim();
 
         if (!name.isEmpty()) {
-            Habit newHabit = new Habit(name, "", null); // description/category left empty for now
+            Habit newHabit = new Habit(name, "", null); // Placeholder for description/category
             Main.habitCollection.addHabit(newHabit);
 
+            // Close the window
             Stage stage = (Stage) habitNameField.getScene().getWindow();
             stage.close();
         } else {
-            System.out.println("Habit name cannot be empty.");
-            // Optional: You could show an alert here instead of just printing
+            // Show alert for invalid input
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Missing Name");
+            alert.setHeaderText("Habit name cannot be empty.");
+            alert.setContentText("Please enter a name for the habit.");
+            alert.showAndWait();
         }
+    }
+    /**
+     * Handles user clicking "Cancel".
+     * Closes the form without saving.
+     */
+    @FXML
+    private void handleCancel() {
+        Stage stage = (Stage) habitNameField.getScene().getWindow();
+        stage.close();
     }
 }

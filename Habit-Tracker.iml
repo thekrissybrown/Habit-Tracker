@@ -7,13 +7,6 @@
       <sourceFolder url="file://$MODULE_DIR$/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
     </content>
-    <content url="file://$MODULE_DIR$/out" />
-    <content url="file://$MODULE_DIR$/out/production" />
-    <content url="file://$MODULE_DIR$/out/production/Habit-Tracker" />
-    <content url="file://$MODULE_DIR$/out/production/Habit-Tracker/analytics" />
-    <content url="file://$MODULE_DIR$/out/production/Habit-Tracker/controller" />
-    <content url="file://$MODULE_DIR$/out/production/Habit-Tracker/model" />
-    <content url="file://$MODULE_DIR$/out/production/Habit-Tracker/ui" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="lib" level="project" />

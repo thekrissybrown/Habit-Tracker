@@ -5,8 +5,6 @@
 
 package ui;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,19 +14,27 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.TilePane;
 import javafx.stage.Stage;
 import model.Habit;
+
 import java.io.IOException;
 import java.net.URL;
 
+/**
+ * Controller for the dashboard scene.
+ * Displays all tracked habits as styled cards and allows navigation to the add habit form.
+ *
+ * Author: Krissy Brown
+ * Date: 2025-04-24
+ */
 public class HabitTrackerUI {
-    // ───────────────────────────────────────────────────────────────
+
     @FXML
-    private Button addHabitButton;
-    // ⚠️ Make sure dashboard.fxml uses fx:id="addHabitButton"
+    private Button addHabitButton; // fx:id="addHabitButton" in dashboard.fxml
+
     @FXML
-    private TilePane habitTilePane; // ⚠️ Make sure dashboard.fxml uses fx:id="habitTilePane"
+    private TilePane habitTilePane; // fx:id="habitTilePane" in dashboard.fxml
 
     /**
-     * Initializes the dashboard UI by loading all habits into styled cards.
+     * Initializes the dashboard UI by populating habit cards from the collection.
      */
     @FXML
     public void initialize() {
@@ -38,7 +44,7 @@ public class HabitTrackerUI {
             for (Habit habit : Main.habitCollection.getAllHabits()) {
                 URL fxmlUrl = getClass().getResource("/ui/HabitCard.fxml");
                 if (fxmlUrl == null) {
-                    throw new IOException("Could not find HabitCard.fxml in /ui/");
+                    throw new IOException("Missing FXML: /ui/HabitCard.fxml");
                 }
 
                 FXMLLoader loader = new FXMLLoader(fxmlUrl);
@@ -47,20 +53,23 @@ public class HabitTrackerUI {
                 controller.setHabit(habit);
                 habitTilePane.getChildren().add(card);
             }
-
         } catch (IOException e) {
             showError("Failed to load habit cards.", e);
         }
     }
 
-
     /**
-     * Opens the "Add Habit" form in a new window.
+     * Opens the Add Habit form in a new window.
      */
     @FXML
     private void handleAddHabitButton() {
         try {
-            Parent addHabitView = FXMLLoader.load(getClass().getResource("/ui/addHabit.fxml"));
+            URL fxmlUrl = getClass().getResource("/ui/addHabit.fxml");
+            if (fxmlUrl == null) {
+                throw new IOException("Missing FXML: /ui/addHabit.fxml");
+            }
+
+            Parent addHabitView = FXMLLoader.load(fxmlUrl);
             Stage stage = new Stage();
             stage.setTitle("Add New Habit");
             stage.setScene(new Scene(addHabitView));
@@ -72,7 +81,7 @@ public class HabitTrackerUI {
     }
 
     /**
-     * Displays an error alert dialog with the given message and exception details.
+     * Shows an alert dialog with an error message.
      */
     private void showError(String message, Exception e) {
         Alert alert = new Alert(Alert.AlertType.ERROR);

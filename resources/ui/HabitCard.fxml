@@ -2,7 +2,6 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.Font?>
 
 <VBox xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="ui.HabitCardController"
@@ -13,23 +12,19 @@
         <Insets top="16" bottom="16" left="20" right="20"/>
     </padding>
 
-    <Label fx:id="habitNameLabel" styleClass="habit-title">
-        <font>
-            <Font name="Segoe UI Bold" size="16"/>
-        </font>
-    </Label>
+    <Label fx:id="habitNameLabel" styleClass="habit-title" />
 
-    <Label fx:id="streakLabel" styleClass="habit-streak">
-        <font>
-            <Font name="Segoe UI" size="12"/>
-        </font>
-    </Label>
+    <Label fx:id="streakLabel" styleClass="habit-streak" />
 
     <HBox spacing="8">
-        <ToggleButton fx:id="doneToggle" onAction="#handleToggleDone"
-                      text="✓ Done Today" styleClass="done-toggle"/>
-        <Button fx:id="editButton" onAction="#handleEditHabit"
-                text="✏️ Edit" styleClass="edit-button"/>
-    </HBox>
+        <ToggleButton fx:id="doneToggle"
+                      onAction="#handleToggleDone"
+                      text="✓ Done Today"
+                      styleClass="done-toggle" />
 
+        <Button fx:id="editButton"
+                onAction="#handleEditHabit"
+                text="✏️ Edit"
+                styleClass="edit-button" />
+    </HBox>
 </VBox>
