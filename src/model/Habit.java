@@ -111,6 +111,8 @@ public class Habit implements Serializable { //Added Serializable to allow compa
             return;
         }
 
+        completionDates.sort(null);
+
         LocalDate today = LocalDate.now();
         LocalDate latestCompletion = completionDates.getLast();
 
