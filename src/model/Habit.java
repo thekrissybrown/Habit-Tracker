@@ -13,103 +13,121 @@ public class Habit implements Serializable { //Added Serializable to allow compa
     private String name;
     private String description;
     private HabitCategory category;
-    private LocalDate creationDate;
-    private ArrayList<LocalDate> completionDates;
+    private final LocalDate creationDate;
+    private final ArrayList<LocalDate> completionDates;
+    private int streak;
     private static final long serialVersionUID = 1L; // <-- SerialVersionUID for serialization
+
     // Constructor
-    public Habit(String name, String description, HabitCategory category){
+    public Habit(String name, String description, HabitCategory category) {
         this.name = name;
         this.description = description;
         this.category = category;
         this.creationDate = LocalDate.now();
         this.completionDates = new ArrayList<>();
+        this.streak = 0;
     }
 
     // Getters for Habits
-    public String getName(){
+    public String getName() {
         return name;
     }
 
-    public String getDescription(){
+    public String getDescription() {
         return description;
     }
 
-    public HabitCategory getCategory(){
+    public HabitCategory getCategory() {
         return category;
     }
 
-    public LocalDate getCreationDate(){
+    public LocalDate getCreationDate() {
         return creationDate;
     }
 
-    public ArrayList<LocalDate> getCompletionDates(){
+    public ArrayList<LocalDate> getCompletionDates() {
         return completionDates;
     }
 
+    public int getStreak() {
+        return streak;
+    }
+
     // Setters for Habits (In the case of updating after it has been added)
-    public void setName(String name){
+    public void setName(String name) {
         this.name = name;
     }
 
-    public void setDescription(String description){
+    public void setDescription(String description) {
         this.description = description;
     }
 
-    public void setCategory(HabitCategory category){
+    public void setCategory(HabitCategory category) {
         this.category = category;
     }
 
     // Adds current date as a completion date
     // Checks if the date has already been added to the list.
-    public void markCompletedToday(){
-        if (completionDates.contains(LocalDate.now())){
-            throw new RuntimeException("Task already completed today.");
-        } else
-            completionDates.add(LocalDate.now());
+    // Sorts and checks for a streak
+    public void markCompletedToday() {
+        LocalDate today = LocalDate.now();
+        if (completionDates.contains(today)) {
+            throw new IllegalArgumentException("Habit " + name + " has already been completed today.");
+        } else {
+            completionDates.add(today);
+            completionDates.sort(null);
+            checkStreak();
+        }
     }
 
     // Adds a past date to completion dates
     // Checks if the date has already been added to the list.
-    public void markCompletedPast(LocalDate date){
-        if (completionDates.contains(LocalDate.now())){
-            throw new RuntimeException("Task already completed on that date.");
-        } else
+    // Sorts and checks for a streak
+    public void markCompletedPast(LocalDate date) {
+        LocalDate today = LocalDate.now();
+        if (date.isAfter(today)) {
+            throw new IllegalArgumentException("Cannot mark completion for a future date.");
+        }
+        if (completionDates.contains(date)) {
+            throw new IllegalArgumentException("Habit " + name + " has already been completed on " + date);
+        } else {
             completionDates.add(date);
+            completionDates.sort(null);
+            checkStreak();
+        }
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return String.format("Habit name: %s \n Habit description: %s \n Habit category: %s \n Creation date: %s \n Times completed: %s",
                 name, description, category.getName(), creationDate, completionDates.size());
     }
 
-    public String getStreak() {
-        int streak = 0;
+    // Method to look through list of completions to check if there is a streak
+    public void checkStreak() {
+        if (completionDates.isEmpty()) {
+            streak = 0;
+            return;
+        }
+
         LocalDate today = LocalDate.now();
-        for (LocalDate date : completionDates) {
-            if (date.isEqual(today.minusDays(streak))) {
-                streak++;
-            } else {
+        LocalDate latestCompletion = completionDates.getLast();
+
+        if (!latestCompletion.isEqual(today) && !latestCompletion.isEqual(today.minusDays(1))) {
+            streak = 0;
+            return;
+        }
+
+        int currentStreak = 0;
+        for (int i = completionDates.size() - 1; i >= 0; i--) {
+            LocalDate dateInList = completionDates.get(i);
+            LocalDate expectedDate = latestCompletion.minusDays(currentStreak);
+            if (dateInList.isEqual(expectedDate)) {
+                currentStreak++;
+            } else if (dateInList.isBefore(expectedDate)) {
                 break;
             }
         }
-        return String.valueOf(streak);
-
+        streak = currentStreak;
     }
-
-    public void resetStreak() {
-        // Reset the streak logic
-        completionDates.clear(); // Clear all completion dates
-        // Optionally, you can also reset the creation date or any other properties if needed
-    }
-
-    public void incrementStreak() {
-        // Increment the streak logic
-        LocalDate today = LocalDate.now();
-        if (!completionDates.contains(today)) {
-            completionDates.add(today); // Add today's date to completion dates
-        }
-        // Optionally, you can also update other properties if needed
-    }
-    // Reset the streak logic
 }

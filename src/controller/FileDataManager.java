@@ -1,50 +1,58 @@
-// Project Name: Habit Tracker System
+// Habit Tracker Project
 // Author: Mustafa Almajmaie
-// Date: 2025-04-25
-// Description: This code is part of a habit tracker system that allows users to track their habits.
+// Date: 2025-04-24
+// Responsible for loading and saving HabitCollection data to a CSV file.
+
+
 
 package controller;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 /**
- * Handles reading and writing habit data using Java object serialization.
+ * FileDataManager handles the persistence of HabitCollection using object serialization (.ser).
  */
-public enum FileDataManager {
-    ;
+public class FileDataManager {
 
-    private static final Path DATA_FILE_PATH = Paths.get("data", "habits.ser");
+    private static final String DATA_FILE = "data/habits.ser";
 
     /**
-     * Loads the HabitCollection from file, or returns a new one if the file doesn't exist.
-     * @return HabitCollection loaded from disk
-     * @throws IOException if reading fails
-     * @throws ClassNotFoundException if deserialization fails
+     * Loads the HabitCollection from a binary .ser file.
+     *
+     * @return HabitCollection from file, or a new one if file is missing or corrupted
      */
-    public static HabitCollection load() throws IOException, ClassNotFoundException {
-        if (!Files.exists(DATA_FILE_PATH)) {
-            return new HabitCollection(); // empty collection if nothing saved yet
+    public static HabitCollection load() {
+        File file = new File(DATA_FILE);
+
+        if (!file.exists()) {
+            System.out.println(" No serialized data found. Starting with empty collection.");
+            return new HabitCollection();
         }
 
-        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(DATA_FILE_PATH.toFile()))) {
-            return (HabitCollection) in.readObject();
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file))) {
+            HabitCollection collection = (HabitCollection) ois.readObject();
+            System.out.println(" Habit collection loaded from " + DATA_FILE);
+            return collection;
+        } catch (IOException | ClassNotFoundException e) {
+            System.err.println(" Error loading habit collection: " + e.getMessage());
+            return new HabitCollection(); // fallback if corrupted or incompatible
         }
     }
 
     /**
-     * Saves the HabitCollection to file using object serialization.
-     * @param habitCollection the data to save
-     * @throws IOException if writing fails
+     * Saves the HabitCollection to a binary .ser file.
+     *
+     * @param habitCollection the data to persist
      */
-    public static void save(HabitCollection habitCollection) throws IOException {
-        // Make sure the data directory exists
-        Files.createDirectories(DATA_FILE_PATH.getParent());
+    public static void save(HabitCollection habitCollection) {
+        File file = new File(DATA_FILE);
+        file.getParentFile().mkdirs();
 
-        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(DATA_FILE_PATH.toFile()))) {
-            out.writeObject(habitCollection);
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file))) {
+            oos.writeObject(habitCollection);
+            System.out.println(" Habit collection saved to " + DATA_FILE);
+        } catch (IOException e) {
+            System.err.println(" Error saving habit collection: " + e.getMessage());
         }
     }
 }
