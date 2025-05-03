@@ -15,6 +15,7 @@ public class Habit implements Serializable { //Added Serializable to allow compa
     private HabitCategory category;
     private final LocalDate creationDate;
     private final ArrayList<LocalDate> completionDates;
+    private int streak;
     private static final long serialVersionUID = 1L; // <-- SerialVersionUID for serialization
 
     // Constructor
@@ -24,6 +25,7 @@ public class Habit implements Serializable { //Added Serializable to allow compa
         this.category = category;
         this.creationDate = LocalDate.now();
         this.completionDates = new ArrayList<>();
+        this.streak = 0;
     }
 
     // Getters for Habits
@@ -45,6 +47,22 @@ public class Habit implements Serializable { //Added Serializable to allow compa
 
     public ArrayList<LocalDate> getCompletionDates() {
         return completionDates;
+    }
+
+    public int getStreak() {
+        return streak;
+        /*
+        int streak = 0;
+        LocalDate today = LocalDate.now();
+        for (LocalDate date : completionDates) {
+            if (date.isEqual(today.minusDays(streak))) {
+                streak++;
+            } else {
+                break;
+            }
+        }
+        return String.valueOf(streak);
+         */
     }
 
     // Setters for Habits (In the case of updating after it has been added)
@@ -82,20 +100,6 @@ public class Habit implements Serializable { //Added Serializable to allow compa
     public String toString() {
         return String.format("Habit name: %s \n Habit description: %s \n Habit category: %s \n Creation date: %s \n Times completed: %s",
                 name, description, category.getName(), creationDate, completionDates.size());
-    }
-
-    public String getStreak() {
-        int streak = 0;
-        LocalDate today = LocalDate.now();
-        for (LocalDate date : completionDates) {
-            if (date.isEqual(today.minusDays(streak))) {
-                streak++;
-            } else {
-                break;
-            }
-        }
-        return String.valueOf(streak);
-
     }
 
     public void resetStreak() {
