@@ -14,6 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
+import analytics.AchievementSystem;
 
 import java.io.IOException;
 import java.net.URL;
@@ -56,6 +57,10 @@ public class Main extends Application {
 
         try {
             habitCollection = FileDataManager.load();
+
+            // 🔥 Evaluate achievements and log to console
+            System.out.println("🏆 Earned Achievements: " + AchievementSystem.evaluateAchievements(habitCollection));
+
             loadDashboard(primaryStage);
         } catch (IOException e) {
             showError("Failed to load dashboard UI.", e);

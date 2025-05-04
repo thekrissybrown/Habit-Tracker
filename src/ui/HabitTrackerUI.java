@@ -79,6 +79,23 @@ public class HabitTrackerUI {
             showError("Failed to open Add Habit form.", e);
         }
     }
+    @FXML
+    private void handleViewAchievements() {
+        try {
+            var achievements = analytics.AchievementSystem.evaluateAchievements(Main.habitCollection);
+            String content = achievements.isEmpty()
+                    ? "No achievements earned yet. Keep going!"
+                    : String.join("\n• ", achievements);
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Your Achievements");
+            alert.setHeaderText("🏆 Achievements You've Earned");
+            alert.setContentText("• " + content);
+            alert.showAndWait();
+        } catch (Exception e) {
+            showError("Failed to load achievements.", e);
+        }
+    }
 
     /**
      * Shows an alert dialog with an error message.

@@ -22,6 +22,10 @@
                     text="＋ Add Habit"
                     styleClass="button"
                     onAction="#handleAddHabitButton"/>
+            <Button fx:id="viewAchievementsButton"
+                    text="🏆 View Achievements"
+                    onAction="#handleViewAchievements"
+                    styleClass="view-achievements-button"/>
         </ToolBar>
     </top>
 
