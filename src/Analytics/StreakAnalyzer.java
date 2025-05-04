@@ -1,46 +1,81 @@
 package analytics;
 
-/*
- * Habit Tracker
- * Author: Kat Nunez
- * Date: April 24, 2025
- * Description: Processes habit data to calculate statistics, streaks, and achievements.
+// Habit Tracker Project
+// Author: Kat Nunez
+// Date: 2025-05-04
+// Refactored to aggregate statistics across all habits.
+
+import controller.HabitCollection;
+import model.Habit;
+
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.util.*;
+
+/**
+ * Aggregates historical statistics across a collection of habits.
  */
-
 public class StreakAnalyzer {
-    
-    private int currentStreak;
-    private int longestStreak;
 
-    // Default constructor
-    public StreakAnalyzer() {
-        this.currentStreak = 0;
-        this.longestStreak = 0;
+    /**
+     * Calculates the total number of completions across all habits.
+     */
+    public static int getTotalCompletions(HabitCollection habits) {
+        return habits.getAllHabits().stream()
+                .mapToInt(h -> h.getCompletionDates().size())
+                .sum();
     }
 
-    // Parameterized constructor
-    public StreakAnalyzer(int currentStreak, int longestStreak) {
-        this.currentStreak = currentStreak;
-        this.longestStreak = longestStreak;
+    /**
+     * Calculates the completion percentage across a date range.
+     */
+    public static double getCompletionPercentage(HabitCollection habits, LocalDate startDate, LocalDate endDate) {
+        long totalDays = ChronoUnit.DAYS.between(startDate, endDate) + 1;
+        if (totalDays <= 0) return 0.0;
+
+        Set<LocalDate> allCompletions = new HashSet<>();
+        for (Habit h : habits.getAllHabits()) {
+            for (LocalDate date : h.getCompletionDates()) {
+                if (!date.isBefore(startDate) && !date.isAfter(endDate)) {
+                    allCompletions.add(date);
+                }
+            }
+        }
+
+        return (allCompletions.size() / (double) totalDays) * 100;
     }
 
-    // Returns the current streak count
-    public int getCurrentStreak() {
-        return currentStreak;
+    /**
+     * Finds the longest consecutive streak across all habits.
+     */
+    public static int getLongestStreakAcrossHabits(HabitCollection habits) {
+        Set<LocalDate> allCompletionDates = new TreeSet<>();
+        for (Habit h : habits.getAllHabits()) {
+            allCompletionDates.addAll(h.getCompletionDates());
+        }
+
+        int longest = 0;
+        int current = 0;
+        LocalDate previous = null;
+
+        for (LocalDate date : allCompletionDates) {
+            if (previous != null && date.equals(previous.plusDays(1))) {
+                current++;
+            } else {
+                current = 1;
+            }
+            longest = Math.max(longest, current);
+            previous = date;
+        }
+
+        return longest;
     }
 
-    // Sets the current streak count
-    public void setCurrentStreak(int currentStreak) {
-        this.currentStreak = currentStreak;
-    }
-
-    // Returns the longest streak count
-    public int getLongestStreak() {
-        return longestStreak;
-    }
-
-    // Sets the longest streak count
-    public void setLongestStreak(int longestStreak) {
-        this.longestStreak = longestStreak;
+    /**
+     * Placeholder for optional streak trends over time.
+     */
+    public static Map<String, Integer> getStreakTrends(HabitCollection habits) {
+        // Optional: return trends by week/month (not implemented yet)
+        return new HashMap<>();
     }
 }
