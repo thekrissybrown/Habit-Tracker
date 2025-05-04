@@ -8,6 +8,7 @@ package ui;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import model.Habit;
 
@@ -27,6 +28,13 @@ public class AddHabitController {
     @FXML
     private TextField habitNameField;
 
+    @FXML
+    private TextField emojiField; // 🆕 field for emoji entry
+
+    @FXML
+    private Label validationLabel;
+
+
     // ───────────────────────────────────────────────────────────────
     // 💾 Event Handlers
     // ───────────────────────────────────────────────────────────────
@@ -38,9 +46,11 @@ public class AddHabitController {
     @FXML
     private void handleSaveHabit() {
         String name = habitNameField.getText().trim();
+        String emoji = emojiField.getText().trim();
 
         if (!name.isEmpty()) {
             Habit newHabit = new Habit(name, "", null); // Placeholder for description/category
+            newHabit.setEmoji(emoji.isEmpty() ? "🌱" : emoji); // ✅ user input or fallback emoji
             Main.habitCollection.addHabit(newHabit);
 
             // Close the window
@@ -55,6 +65,7 @@ public class AddHabitController {
             alert.showAndWait();
         }
     }
+
     /**
      * Handles user clicking "Cancel".
      * Closes the form without saving.

@@ -59,3 +59,30 @@
     -fx-font-size: 14px;
     -fx-text-fill: #6B7280;
 }
+
+.habit-emoji {
+    -fx-font-size: 20px;
+    -fx-label-padding: 0 4 0 0;
+}
+
+.streak-bar {
+    -fx-accent: linear-gradient(to right, #5b58ae, #8d89e6, #f9a8d4);
+    -fx-background-insets: 0;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-pref-height: 10px;
+    -fx-background-color: #e5e7eb;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.04), 2, 0, 0, 1);
+}
+.button.secondary {
+    -fx-background-color: #f3f4f6;
+    -fx-text-fill: #374151;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+}
+
+.error-label {
+    -fx-text-fill: #dc2626;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}

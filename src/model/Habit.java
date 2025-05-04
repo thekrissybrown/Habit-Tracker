@@ -18,6 +18,11 @@ public class Habit implements Serializable { //Added Serializable to allow compa
     private int streak;
     private int longestStreak;
     private static final long serialVersionUID = 1L; // <-- SerialVersionUID for serialization
+    // ───────────────────────────────────────────────────────────────
+    // 🌱 Optional Emoji Tag (UI use only)
+    // ───────────────────────────────────────────────────────────────
+    private String emoji = "🌱"; // Default icon, can be customized
+
 
     // Constructor
     public Habit(String name, String description, HabitCategory category) {
@@ -139,5 +144,13 @@ public class Habit implements Serializable { //Added Serializable to allow compa
         streak = currentStreak;
         if (streak > longestStreak)
             longestStreak = streak;
+    }// ───────────────────────────────────────────────────────────────
+    // 🔄 Emoji Accessors
+    // ───────────────────────────────────────────────────────────────
+    public String getEmoji() {
+        return emoji;
+    }
+    public void setEmoji(String emoji) {
+        this.emoji = emoji;
     }
 }

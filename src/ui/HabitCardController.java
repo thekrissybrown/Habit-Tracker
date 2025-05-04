@@ -3,6 +3,7 @@ package ui;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ToggleButton;
 import model.Habit;
 
@@ -21,10 +22,12 @@ public class HabitCardController {
     // 💬 FXML Fields
     // ───────────────────────────────────────────────────────────────
 
+    @FXML private Label emojiLabel;
     @FXML private Label habitNameLabel;
     @FXML private Label streakLabel;
     @FXML private ToggleButton doneToggle;
     @FXML private Button editButton;
+    @FXML private ProgressBar streakBar;
 
     // ───────────────────────────────────────────────────────────────
     // 📦 Internal Data
@@ -42,11 +45,13 @@ public class HabitCardController {
      */
     public void setHabit(Habit habit) {
         this.habit = habit;
-        habitNameLabel.setText(habit.getName());
-        updateStreakDisplay();
 
-        // Pre-select toggle if already completed today
+        habitNameLabel.setText(habit.getName());
+        emojiLabel.setText(habit.getEmoji() != null ? habit.getEmoji() : "🌱");
+
         doneToggle.setSelected(habit.getCompletionDates().contains(LocalDate.now()));
+
+        updateStreakDisplay();
     }
 
     // ───────────────────────────────────────────────────────────────
@@ -82,9 +87,17 @@ public class HabitCardController {
     // ───────────────────────────────────────────────────────────────
 
     /**
-     * Updates the streak label visually.
+     * Updates the streak label and visual bar.
      */
     private void updateStreakDisplay() {
-        streakLabel.setText("\uD83D\uDD25 " + habit.getStreak() + " day streak");
+        int streak = habit.getStreak();
+        int maxStreak = 30; // Cap for visualization purposes
+        double progress = Math.min(1.0, streak / (double) maxStreak);
+
+        streakLabel.setText("\uD83D\uDD25 " + streak + " day streak");
+
+        if (streakBar != null) {
+            streakBar.setProgress(progress);
+        }
     }
 }
