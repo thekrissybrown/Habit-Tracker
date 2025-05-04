@@ -5,27 +5,40 @@
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.TilePane?>
+
 <BorderPane xmlns="http://javafx.com/javafx/24.0.1"
             xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="ui.HabitTrackerUI"
             prefHeight="600.0"
             prefWidth="800.0"
             styleClass="root">
+
     <top>
-        <ToolBar padding="10">
+        <ToolBar>
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
             <Button fx:id="addHabitButton"
                     text="＋ Add Habit"
                     styleClass="button"
                     onAction="#handleAddHabitButton"/>
         </ToolBar>
     </top>
+
     <center>
-        <ScrollPane fitToWidth="true" fitToHeight="true" padding="10">
-            <TilePane fx:id="habitTilePane" hgap="15" vgap="15" prefColumns="2">
+        <ScrollPane fitToWidth="true" fitToHeight="true">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <TilePane fx:id="habitTilePane"
+                      hgap="15"
+                      vgap="15"
+                      prefColumns="2">
                 <padding>
                     <Insets top="10" right="10" bottom="10" left="10"/>
                 </padding>
             </TilePane>
         </ScrollPane>
     </center>
+
 </BorderPane>

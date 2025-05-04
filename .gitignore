@@ -2,9 +2,6 @@
 .idea/
 *.iml
 
-# Ignore build/output folders
-out/
-production/
 
 # Ignore compiled class files
 *.class
