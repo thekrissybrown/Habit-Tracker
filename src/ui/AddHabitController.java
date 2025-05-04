@@ -8,6 +8,7 @@ package ui;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import model.Habit;
 
@@ -29,6 +30,10 @@ public class AddHabitController {
 
     @FXML
     private TextField emojiField; // 🆕 field for emoji entry
+
+    @FXML
+    private Label validationLabel;
+
 
     // ───────────────────────────────────────────────────────────────
     // 💾 Event Handlers
