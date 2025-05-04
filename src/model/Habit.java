@@ -16,6 +16,7 @@ public class Habit implements Serializable { //Added Serializable to allow compa
     private final LocalDate creationDate;
     private final ArrayList<LocalDate> completionDates;
     private int streak;
+    private int longestStreak;
     private static final long serialVersionUID = 1L; // <-- SerialVersionUID for serialization
 
     // Constructor
@@ -26,6 +27,7 @@ public class Habit implements Serializable { //Added Serializable to allow compa
         this.creationDate = LocalDate.now();
         this.completionDates = new ArrayList<>();
         this.streak = 0;
+        this.longestStreak = 0;
     }
 
     // Getters for Habits
@@ -51,6 +53,10 @@ public class Habit implements Serializable { //Added Serializable to allow compa
 
     public int getStreak() {
         return streak;
+    }
+
+    public int getLongestStreak() {
+        return longestStreak;
     }
 
     // Setters for Habits (In the case of updating after it has been added)
@@ -131,5 +137,7 @@ public class Habit implements Serializable { //Added Serializable to allow compa
             }
         }
         streak = currentStreak;
+        if (streak > longestStreak)
+            longestStreak = streak;
     }
 }
