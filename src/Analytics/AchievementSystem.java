@@ -1,7 +1,7 @@
 package analytics;
 
 // Habit Tracker Project
-// Author: Mustafa Almajmaie
+// Author: Kat Nunez
 // Date: 2025-05-04
 // Awards achievements based on aggregate statistics.
 
