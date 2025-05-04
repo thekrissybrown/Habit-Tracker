@@ -86,3 +86,76 @@
     -fx-font-size: 12px;
     -fx-font-weight: bold;
 }
+
+.habit-list {
+    -fx-background-color: #F3F4F6;
+    -fx-border-radius: 12;
+    -fx-padding: 10;
+    -fx-spacing: 10;
+}
+
+.edit-button {
+    -fx-background-color: #5b58ae;
+    -fx-text-fill: white;
+    -fx-background-radius: 8;
+    -fx-font-weight: bold;
+}
+
+.edit-button .text {
+    -fx-fill: transparent; /* Needed for emoji rendering workaround */
+}
+
+.edit-button > .graphic {
+    -fx-font-size: 18px;
+}
+.edit-label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+
+.button.secondary {
+    -fx-background-color: #e5e7eb;
+    -fx-text-fill: #374151;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-pref-height: 32;
+    -fx-cursor: hand;
+}
+/* Edit button container */
+.edit-button {
+    -fx-background-color: #5b58ae;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+    -fx-padding: 6 14;
+    -fx-pref-height: 32;
+    -fx-min-width: 120;
+    -fx-alignment: center;
+}
+
+/* Fixes the nested labels inside buttons */
+.edit-label, .done-label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+
+.done-toggle {
+    -fx-background-color: #e5e7eb;
+    -fx-background-radius: 8;
+    -fx-pref-height: 32;
+    -fx-min-width: 120;
+    -fx-cursor: hand;
+}
+
+.done-toggle:selected {
+    -fx-background-color: #c7f0d8;
+}
+
+/* Optional hover glow */
+.edit-button:hover,
+.done-toggle:hover {
+    -fx-scale-x: 1.03;
+    -fx-scale-y: 1.03;
+}
+

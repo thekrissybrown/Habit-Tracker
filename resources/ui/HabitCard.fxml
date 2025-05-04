@@ -27,13 +27,28 @@
     <HBox spacing="8">
         <ToggleButton fx:id="doneToggle"
                       onAction="#handleToggleDone"
-                      text="✓ Done Today"
-                      styleClass="done-toggle" />
-
+                      styleClass="done-toggle"
+                      minWidth="120"
+                      prefHeight="32">
+            <graphic>
+                <HBox spacing="6" alignment="CENTER">
+                    <Label text="✓" style="-fx-font-size: 16px;" />
+                    <Label text="Done Today" styleClass="done-label" />
+                </HBox>
+            </graphic>
+        </ToggleButton>
         <Button fx:id="editButton"
                 onAction="#handleEditHabit"
-                text="✏️ Edit"
-                styleClass="edit-button" />
-    </HBox>
+                styleClass="edit-button"
+                minWidth="120"
+                prefHeight="32">
+            <graphic>
+                <HBox spacing="6" alignment="CENTER">
+                    <Label text="📝" style="-fx-font-size: 16px;" />
+                    <Label text="Edit" styleClass="edit-label" />
+                </HBox>
+            </graphic>
+        </Button>
+</HBox>
 </VBox>
 

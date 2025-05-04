@@ -27,7 +27,7 @@
     <Label fx:id="validationLabel"
            text="Habit name cannot be empty."
            visible="false"
-           styleClass="error-label" />
+           styleClass="error-label"/>
 
     <HBox spacing="10">
         <Button text="Save Habit"
@@ -37,6 +37,6 @@
         <Button text="Cancel"
                 onAction="#handleCancel"
                 cancelButton="true"
-                styleClass="button secondary" />
+                styleClass="button secondary"/>
     </HBox>
 </VBox>
