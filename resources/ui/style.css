@@ -3,13 +3,16 @@
     -fx-font-family: "Segoe UI", sans-serif;
 }
 
+/* ──────────────────────────────── */
+/* 🟣 General Buttons */
+/* ──────────────────────────────── */
 .button {
     -fx-background-color: #5b58ae;
     -fx-text-fill: white;
     -fx-font-weight: bold;
     -fx-background-radius: 12;
     -fx-font-size: 14px;
-    -fx-padding: 10 20 10 20;
+    -fx-padding: 10 20;
     -fx-cursor: hand;
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 4, 0.5, 0, 2);
 }
@@ -18,6 +21,18 @@
     -fx-background-color: #8d89e6;
 }
 
+.button.secondary {
+    -fx-background-color: #e5e7eb;
+    -fx-text-fill: #374151;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-pref-height: 32;
+    -fx-cursor: hand;
+}
+
+/* ──────────────────────────────── */
+/* 🔤 Labels & Text */
+/* ──────────────────────────────── */
 .label {
     -fx-text-fill: #111827;
     -fx-font-size: 18px;
@@ -40,6 +55,16 @@
     -fx-background-radius: 10;
     -fx-padding: 10;
 }
+
+.error-label {
+    -fx-text-fill: #dc2626;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+/* ──────────────────────────────── */
+/* 🧱 Habit Card */
+/* ──────────────────────────────── */
 .habit-card {
     -fx-background-color: white;
     -fx-background-radius: 12;
@@ -65,6 +90,16 @@
     -fx-label-padding: 0 4 0 0;
 }
 
+.habit-list {
+    -fx-background-color: #F3F4F6;
+    -fx-border-radius: 12;
+    -fx-padding: 10;
+    -fx-spacing: 10;
+}
+
+/* ──────────────────────────────── */
+/* 📊 Streak Progress Bar */
+/* ──────────────────────────────── */
 .streak-bar {
     -fx-accent: linear-gradient(to right, #5b58ae, #8d89e6, #f9a8d4);
     -fx-background-insets: 0;
@@ -74,55 +109,10 @@
     -fx-background-color: #e5e7eb;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.04), 2, 0, 0, 1);
 }
-.button.secondary {
-    -fx-background-color: #f3f4f6;
-    -fx-text-fill: #374151;
-    -fx-font-weight: bold;
-    -fx-background-radius: 8;
-}
 
-.error-label {
-    -fx-text-fill: #dc2626;
-    -fx-font-size: 12px;
-    -fx-font-weight: bold;
-}
-
-.habit-list {
-    -fx-background-color: #F3F4F6;
-    -fx-border-radius: 12;
-    -fx-padding: 10;
-    -fx-spacing: 10;
-}
-
-.edit-button {
-    -fx-background-color: #5b58ae;
-    -fx-text-fill: white;
-    -fx-background-radius: 8;
-    -fx-font-weight: bold;
-}
-
-.edit-button .text {
-    -fx-fill: transparent; /* Needed for emoji rendering workaround */
-}
-
-.edit-button > .graphic {
-    -fx-font-size: 18px;
-}
-.edit-label {
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
-    -fx-font-size: 14px;
-}
-
-.button.secondary {
-    -fx-background-color: #e5e7eb;
-    -fx-text-fill: #374151;
-    -fx-font-weight: bold;
-    -fx-background-radius: 8;
-    -fx-pref-height: 32;
-    -fx-cursor: hand;
-}
-/* Edit button container */
+/* ──────────────────────────────── */
+/* 📝 Edit Button (Emoji + Label) */
+/* ──────────────────────────────── */
 .edit-button {
     -fx-background-color: #5b58ae;
     -fx-background-radius: 8;
@@ -133,29 +123,59 @@
     -fx-alignment: center;
 }
 
-/* Fixes the nested labels inside buttons */
-.edit-label, .done-label {
+.edit-label {
     -fx-text-fill: white;
     -fx-font-weight: bold;
     -fx-font-size: 14px;
 }
 
+/* ──────────────────────────────── */
+/* ✅ Done Today Toggle Button */
+/* ──────────────────────────────── */
 .done-toggle {
-    -fx-background-color: #e5e7eb;
+    -fx-background-color: #f3f4f6;
+    -fx-text-fill: #374151;
+    -fx-font-weight: bold;
     -fx-background-radius: 8;
     -fx-pref-height: 32;
     -fx-min-width: 120;
     -fx-cursor: hand;
+    -fx-border-color: #d1d5db;
+    -fx-border-width: 1;
 }
 
 .done-toggle:selected {
-    -fx-background-color: #c7f0d8;
+    -fx-background-color: #10b981; /* Emerald green */
+    -fx-text-fill: white;
+    -fx-border-color: #059669;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-effect: dropshadow(gaussian, rgba(16,185,129,0.4), 6, 0.2, 0, 2);
 }
 
-/* Optional hover glow */
-.edit-button:hover,
-.done-toggle:hover {
+
+.done-label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+
+/* ──────────────────────────────── */
+/* 💫 Hover & Press Effects */
+/* ──────────────────────────────── */
+.done-toggle:hover,
+.edit-button:hover {
     -fx-scale-x: 1.03;
     -fx-scale-y: 1.03;
 }
 
+.done-toggle:pressed,
+.edit-button:pressed {
+    -fx-scale-x: 0.97;
+    -fx-scale-y: 0.97;
+}
+
+.edit-button > .graphic,
+.done-toggle > .graphic {
+    -fx-alignment: center;
+}

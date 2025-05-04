@@ -22,7 +22,7 @@
 
     <TextField fx:id="habitNameField"
                promptText="Enter habit name"
-               styleClass="text-field" />
+               styleClass="text-field"/>
 
     <Label fx:id="validationLabel"
            text="Habit name cannot be empty."
