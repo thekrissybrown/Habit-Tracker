@@ -4,6 +4,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.HBox?>
 
+
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
 <VBox xmlns="http://javafx.com/javafx/23.0.1"
       xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="ui.AddHabitController"
@@ -18,6 +21,24 @@
 
     <Label text="Add a New Habit" styleClass="label"/>
     <Label text="Choose an Emoji:" styleClass="label"/>
+
+    <ComboBox fx:id="emojiPicker"
+              promptText="Select an emoji"
+              styleClass="text-field">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="🌱"/>
+                <String fx:value="🧘"/>
+                <String fx:value="📖"/>
+                <String fx:value="🏃‍♀️"/>
+                <String fx:value="🧼"/>
+                <String fx:value="📝"/>
+                <String fx:value="🚰"/>
+                <String fx:value="🍎"/>
+            </FXCollections>
+        </items>
+    </ComboBox>
+
     <TextField fx:id="emojiField" promptText="e.g. 🧘"/>
 
     <TextField fx:id="habitNameField"

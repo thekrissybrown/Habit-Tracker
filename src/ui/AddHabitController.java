@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Label;
+import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 import model.Habit;
 
@@ -30,6 +31,10 @@ public class AddHabitController {
 
     @FXML
     private TextField emojiField; // 🆕 field for emoji entry
+    // 🆕 field for emoji entry
+    @FXML
+    private ComboBox <String> emojiPicker;
+
 
     @FXML
     private Label validationLabel;
@@ -50,7 +55,9 @@ public class AddHabitController {
 
         if (!name.isEmpty()) {
             Habit newHabit = new Habit(name, "", null); // Placeholder for description/category
-            newHabit.setEmoji(emoji.isEmpty() ? "🌱" : emoji); // ✅ user input or fallback emoji
+            String selectedEmoji = emojiPicker.getValue();
+            newHabit.setEmoji(selectedEmoji != null ? selectedEmoji : "🌱");
+
             Main.habitCollection.addHabit(newHabit);
 
             // Close the window

@@ -179,3 +179,18 @@
 .done-toggle > .graphic {
     -fx-alignment: center;
 }
+.combo-box {
+    -fx-background-color: white;
+    -fx-border-color: #cdcbed;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 6 10;
+    -fx-text-fill: #111827;
+}
+.combo-box, .combo-box .list-cell, .combo-box-popup .list-view {
+    -fx-font-family: "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    -fx-font-size: 16px;
+}
+.label, .habit-emoji {
+    -fx-font-family: "Segoe UI Emoji", "Segoe UI", sans-serif;
+}
