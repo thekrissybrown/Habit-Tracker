@@ -12,12 +12,13 @@
       prefWidth="350"
       prefHeight="320"
       styleClass="root">
-
     <padding>
         <Insets top="30" right="30" bottom="30" left="30"/>
     </padding>
 
     <Label text="Add a New Habit" styleClass="label" />
+    <Label text="Choose an Emoji:" styleClass="label" />
+    <TextField fx:id="emojiField" promptText="e.g. 🏃" />
 
     <TextField fx:id="habitNameField"
                promptText="Enter habit name"
