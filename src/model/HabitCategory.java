@@ -5,9 +5,12 @@
 
 package model;
 
-public class HabitCategory {
+import java.io.Serializable;
+
+public class HabitCategory implements Serializable {
     private String name;
     private String description;
+    private static final long serialVersionUID = 1L;
 
     // Constructor
     public HabitCategory(String name, String description) {
