@@ -23,12 +23,14 @@ public class Habit implements Serializable { //Added Serializable to allow compa
     // ───────────────────────────────────────────────────────────────
     private String emoji = "🌱"; // Default icon, can be customized
 
-
     // Constructor
     public Habit(String name, String description, HabitCategory category) {
         this.name = name;
         this.description = description;
-        this.category = category;
+        if (category == null) {
+            this.category = new HabitCategory("No Category", "No Category");
+        } else
+            this.category = category;
         this.creationDate = LocalDate.now();
         this.completionDates = new ArrayList<>();
         this.streak = 0;
