@@ -42,6 +42,7 @@ public class AddHabitController {
         if (!name.isEmpty()) {
             Habit newHabit = new Habit(name, "", null); // Placeholder for description/category
             Main.habitCollection.addHabit(newHabit);
+            newHabit.setEmoji("📖"); // ✅ Set default emoji for now
 
             // Close the window
             Stage stage = (Stage) habitNameField.getScene().getWindow();

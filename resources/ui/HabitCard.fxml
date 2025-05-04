@@ -12,9 +12,17 @@
         <Insets top="16" bottom="16" left="20" right="20"/>
     </padding>
 
-    <Label fx:id="habitNameLabel" styleClass="habit-title" />
+    <HBox spacing="8" alignment="CENTER_LEFT">
+        <Label fx:id="emojiLabel" text="🌱" styleClass="habit-emoji" />
+        <Label fx:id="habitNameLabel" styleClass="habit-title" />
+    </HBox>
 
     <Label fx:id="streakLabel" styleClass="habit-streak" />
+
+    <ProgressBar fx:id="streakBar"
+                 prefWidth="180"
+                 styleClass="streak-bar"
+                 progress="0.0" />
 
     <HBox spacing="8">
         <ToggleButton fx:id="doneToggle"
@@ -28,3 +36,4 @@
                 styleClass="edit-button" />
     </HBox>
 </VBox>
+
