@@ -51,25 +51,26 @@ public class AddHabitController {
     @FXML
     private void handleSaveHabit() {
         String name = habitNameField.getText().trim();
-        String emoji = emojiField.getText().trim();
+        String selectedEmoji = emojiPicker.getValue();
 
-        if (!name.isEmpty()) {
-            Habit newHabit = new Habit(name, "", null); // Placeholder for description/category
-            String selectedEmoji = emojiPicker.getValue();
-            newHabit.setEmoji(selectedEmoji != null ? selectedEmoji : "🌱");
+        if (name.isEmpty()) {
+            validationLabel.setText("Habit name cannot be empty.");
+            validationLabel.setStyle("-fx-text-fill: #9e1717;");
+            return;
+        }
 
+        Habit newHabit = new Habit(name, "", null); // Placeholder for description/category
+        newHabit.setEmoji(selectedEmoji != null ? selectedEmoji : "🌱");
+
+        try {
             Main.habitCollection.addHabit(newHabit);
 
             // Close the window
             Stage stage = (Stage) habitNameField.getScene().getWindow();
             stage.close();
-        } else {
-            // Show alert for invalid input
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Missing Name");
-            alert.setHeaderText("Habit name cannot be empty.");
-            alert.setContentText("Please enter a name for the habit.");
-            alert.showAndWait();
+        } catch (Exception e) {
+            validationLabel.setText("Failed to save habit. Please try again.");
+            validationLabel.setStyle("-fx-text-fill: #9e1717;");
         }
     }
 

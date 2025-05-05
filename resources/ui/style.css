@@ -80,7 +80,6 @@
     -fx-cursor: hand;
 }
 
-
 .habit-title {
     -fx-font-size: 18px;
     -fx-font-weight: bold;
@@ -108,7 +107,7 @@
 /* 📊 Streak Progress Bar */
 /* ──────────────────────────────── */
 .streak-bar {
-    -fx-accent: linear-gradient(to right, #5b58ae, #8d89e6, #f9a8d4);
+    -fx-accent: #5b58ae;
     -fx-background-insets: 0;
     -fx-background-radius: 8;
     -fx-border-radius: 8;
@@ -120,13 +119,31 @@
 /* ──────────────────────────────── */
 /* 📝 Edit Button (Emoji + Label) */
 /* ──────────────────────────────── */
+/* 📝 Edit Button (Emoji + Label) */
 .edit-button {
     -fx-background-color: #5b58ae;
-    -fx-background-radius: 8;
-    -fx-cursor: hand;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 999;
+    -fx-border-radius: 999;
     -fx-padding: 6 14;
     -fx-pref-height: 32;
     -fx-min-width: 120;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 4, 0.3, 0, 1);
+    -fx-alignment: center;
+}
+
+.edit-button:hover {
+    -fx-background-color: #8d89e6;
+}
+
+.edit-button:pressed {
+    -fx-scale-x: 0.97;
+    -fx-scale-y: 0.97;
+}
+
+.edit-button > .graphic {
     -fx-alignment: center;
 }
 
@@ -136,29 +153,30 @@
     -fx-font-size: 14px;
 }
 
+/* ✅ Done Toggle Button */
+.done-toggle {
+    -fx-background-color: #e0e7ff; /* Light indigo */
+    -fx-text-fill: #1e3a8a;        /* Indigo text */
+    -fx-font-weight: bold;
+    -fx-background-radius: 999;    /* Pill shape */
+    -fx-border-radius: 999;
+    -fx-pref-height: 32;
+    -fx-min-width: 120;
+    -fx-cursor: hand;
+    -fx-border-color: #c7d2fe;
+    -fx-border-width: 1;
+    -fx-padding: 6 14;
+    -fx-effect: dropshadow(gaussian, rgba(30,58,138,0.1), 4, 0.2, 0, 1);
+}
 
 .done-toggle:selected {
     -fx-background-color: #10b981; /* Emerald green */
     -fx-text-fill: white;
     -fx-border-color: #059669;
-    -fx-border-radius: 8;
-    -fx-background-radius: 8;
+    -fx-background-radius: 999;
+    -fx-border-radius: 999;
     -fx-effect: dropshadow(gaussian, rgba(16,185,129,0.4), 6, 0.2, 0, 2);
 }
-
-
-.done-label {
-    -fx-text-fill: white;
-    -fx-font-weight: bold;
-    -fx-font-size: 14px;
-}
-
-.button:disabled, .toggle-button:disabled {
-    -fx-opacity: 0.5;
-    -fx-cursor: default;
-}
-
-
 /* ──────────────────────────────── */
 /* 💫 Hover & Press Effects */
 /* ──────────────────────────────── */
@@ -178,6 +196,10 @@
 .done-toggle > .graphic {
     -fx-alignment: center;
 }
+
+/* ──────────────────────────────── */
+/* 📦 ComboBox */
+/* ──────────────────────────────── */
 .combo-box {
     -fx-background-color: white;
     -fx-border-color: #cdcbed;
@@ -199,8 +221,9 @@
 .label, .habit-emoji {
     -fx-font-family: "Segoe UI Emoji", "Segoe UI", sans-serif;
 }
+
 /* ──────────────────────────────── */
-/* 🏆 View Achievements Button (Secondary Themed) */
+/* 🏆 View Achievements Button */
 /* ──────────────────────────────── */
 .view-achievements-button {
     -fx-background-color: #e0e7ff;
@@ -222,16 +245,22 @@
     -fx-scale-x: 0.97;
     -fx-scale-y: 0.97;
 }
-/* ──────────────────────────────── */
-/* 🎉 Achievements Card */
-/* ──────────────────────────────── */
 
-/*-──────────────────────────── */
-/* Settings buttons */
+/* ──────────────────────────────── */
+/* 🎉 Achievement Card */
+/* ──────────────────────────────── */
+.achievement-card {
+    -fx-background-color: #ffffff;
+    -fx-padding: 12;
+    -fx-border-radius: 12;
+}
 
+/* ──────────────────────────────── */
+/* ⚙ Settings Button */
+/* ──────────────────────────────── */
 .settings-button {
     -fx-background-color: transparent;
-    -fx-text-fill: #4B5563; /* Tailwind slate-600 */
+    -fx-text-fill: #4B5563;
     -fx-font-size: 18px;
     -fx-cursor: hand;
     -fx-padding: 6 12;
@@ -239,7 +268,7 @@
 }
 
 .settings-button:hover {
-    -fx-background-color: #e5e7eb; /* subtle gray hover */
+    -fx-background-color: #e5e7eb;
     -fx-text-fill: #1F2937;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 4, 0.5, 0, 2);
 }
-
