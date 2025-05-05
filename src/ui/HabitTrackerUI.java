@@ -33,6 +33,13 @@ public class HabitTrackerUI {
     @FXML
     private TilePane habitTilePane; // fx:id="habitTilePane" in dashboard.fxml
 
+    @FXML
+    private Button viewAchievementsButton; // fx:id="viewAchievementsButton"
+
+    @FXML
+    private Button settingsButton; // fx:id="settingsButton"
+
+
     /**
      * Initializes the dashboard UI by populating habit cards from the collection.
      */

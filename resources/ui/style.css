@@ -74,6 +74,13 @@
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 6, 0, 0, 4);
 }
 
+.habit-card:hover {
+    -fx-background-color: #ffffff;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 10, 0, 0, 6);
+    -fx-cursor: hand;
+}
+
+
 .habit-title {
     -fx-font-size: 18px;
     -fx-font-weight: bold;
@@ -129,20 +136,6 @@
     -fx-font-size: 14px;
 }
 
-/* ──────────────────────────────── */
-/* ✅ Done Today Toggle Button */
-/* ──────────────────────────────── */
-.done-toggle {
-    -fx-background-color: #f3f4f6;
-    -fx-text-fill: #374151;
-    -fx-font-weight: bold;
-    -fx-background-radius: 8;
-    -fx-pref-height: 32;
-    -fx-min-width: 120;
-    -fx-cursor: hand;
-    -fx-border-color: #d1d5db;
-    -fx-border-width: 1;
-}
 
 .done-toggle:selected {
     -fx-background-color: #10b981; /* Emerald green */
@@ -159,6 +152,12 @@
     -fx-font-weight: bold;
     -fx-font-size: 14px;
 }
+
+.button:disabled, .toggle-button:disabled {
+    -fx-opacity: 0.5;
+    -fx-cursor: default;
+}
+
 
 /* ──────────────────────────────── */
 /* 💫 Hover & Press Effects */
@@ -191,6 +190,12 @@
     -fx-font-family: "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
     -fx-font-size: 16px;
 }
+
+.combo-box:hover {
+    -fx-border-color: #8d89e6;
+    -fx-effect: dropshadow(gaussian, rgba(141, 137, 230, 0.2), 6, 0.2, 0, 2);
+}
+
 .label, .habit-emoji {
     -fx-font-family: "Segoe UI Emoji", "Segoe UI", sans-serif;
 }
@@ -216,5 +221,25 @@
     -fx-background-color: #a5b4fc;
     -fx-scale-x: 0.97;
     -fx-scale-y: 0.97;
+}
+/* ──────────────────────────────── */
+/* 🎉 Achievements Card */
+/* ──────────────────────────────── */
+
+/*-──────────────────────────── */
+/* Settings buttons */
+
+.settings-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: #4B5563; /* Tailwind slate-600 */
+    -fx-font-size: 18px;
+    -fx-cursor: hand;
+    -fx-padding: 6 12;
+    -fx-border-radius: 6;
+}
+
+.settings-button:hover {
+    -fx-background-color: #e5e7eb; /* subtle gray hover */
+    -fx-text-fill: #1F2937;
 }
 

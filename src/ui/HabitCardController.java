@@ -28,6 +28,8 @@ public class HabitCardController {
     @FXML private ToggleButton doneToggle;
     @FXML private Button editButton;
     @FXML private ProgressBar streakBar;
+    @FXML private Button settingsButton;
+
 
     // ───────────────────────────────────────────────────────────────
     // 📦 Internal Data
@@ -80,6 +82,12 @@ public class HabitCardController {
     private void handleEditHabit() {
         // Placeholder for future edit UI
         System.out.println("Edit habit clicked: " + habit.getName());
+    }
+
+    @FXML
+    private void handleSettings() {
+        // Placeholder for future settings UI
+        System.out.println("⚙ Settings button clicked for habit: " + habit.getName());
     }
 
     // ───────────────────────────────────────────────────────────────
