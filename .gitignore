@@ -1,15 +1,47 @@
-# Ignore IDE settings
+# IDE settings
 .idea/
 *.iml
+*.iws
+*.ipr
+.settings/
+.classpath
+.project
+.vscode/
 
-
-# Ignore compiled class files
+# Compiled files
 *.class
+target/
+build/
+out/
+bin/
 
-# Ignore logs/temp files
+# Package files
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Logs and temp files
 *.log
 *.tmp
 .DS_Store
+hs_err_pid*
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
 
 # Ignore all files in /data except the serialized habits file
 /data/*
