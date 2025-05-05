@@ -24,7 +24,7 @@
                  styleClass="streak-bar"
                  progress="0.0" />
 
-    <HBox spacing="8">
+    <HBox spacing="8" alignment="CENTER_LEFT">
         <ToggleButton fx:id="doneToggle"
                       onAction="#handleToggleDone"
                       styleClass="done-toggle"
@@ -37,6 +37,7 @@
                 </HBox>
             </graphic>
         </ToggleButton>
+
         <Button fx:id="editButton"
                 onAction="#handleEditHabit"
                 styleClass="edit-button"
@@ -49,6 +50,5 @@
                 </HBox>
             </graphic>
         </Button>
-</HBox>
+    </HBox>
 </VBox>
-

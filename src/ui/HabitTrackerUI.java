@@ -103,7 +103,18 @@ public class HabitTrackerUI {
             showError("Failed to load achievements.", e);
         }
     }
-
+    /**
+     * Opens the Settings form in a new window.
+     */
+    @FXML
+    private void handleSettings() {
+        // Placeholder for settings functionality
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Settings");
+        alert.setHeaderText("⚙ Settings Panel");
+        alert.setContentText("Settings functionality coming soon!");
+        alert.showAndWait();
+    }
     /**
      * Shows an alert dialog with an error message.
      */
