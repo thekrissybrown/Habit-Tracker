@@ -1,0 +1,49 @@
+// Habit Tracker Project
+// Author: Mustafa Almajmaie
+// Date: 2025-06-24
+//File DataManager Test
+
+package test;
+
+import controller.FileDataManager;
+import controller.HabitCollection;
+import model.Habit;
+import model.HabitCategory;
+
+import java.time.LocalDate;
+
+public class FileDataManagerTest {
+
+    public static void main(String[] args) {
+        // Step 1: Create test data
+        HabitCollection original = new HabitCollection();
+
+        Habit h1 = new Habit("Drink Water", "Stay hydrated", new HabitCategory("Health"));
+        h1.setCreationDate(LocalDate.of(2024, 1, 1));
+
+        Habit h2 = new Habit("Journal", "Write down thoughts", new HabitCategory("Mental"));
+        h2.setCreationDate(LocalDate.of(2024, 2, 1));
+
+        original.addHabit(h1);
+        original.addHabit(h2);
+
+        // Step 2: Save to file
+        FileDataManager.save(original);
+        System.out.println(" Data saved to file.");
+
+        // Step 3: Load from file
+        HabitCollection loaded = FileDataManager.load();
+        System.out.println("Data loaded from file.");
+
+        // Step 4: Compare contents
+        System.out.println("\n Verifying loaded data:");
+        loaded.getAllHabits().forEach(System.out::println);
+
+        // Step 5: Validate equivalence by size
+        if (original.getSize() == loaded.getSize()) {
+            System.out.println("\n Test PASSED: Size matches");
+        } else {
+            System.err.println("\n Test FAILED: Size mismatch");
+        }
+    }
+}
