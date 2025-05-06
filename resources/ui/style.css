@@ -21,7 +21,7 @@
     -fx-background-color: #8d89e6;
 }
 
-.button.secondary {
+.button.secondary{
     -fx-background-color: #e5e7eb;
     -fx-text-fill: #374151;
     -fx-font-weight: bold;
@@ -92,8 +92,10 @@
 }
 
 .habit-emoji {
-    -fx-font-size: 20px;
+    -fx-font-size: 16px;
     -fx-label-padding: 0 4 0 0;
+    -fx-text-fill: #4B5563;
+    -fx-alignment: center;
 }
 
 .habit-list {
@@ -115,13 +117,16 @@
     -fx-background-color: #e5e7eb;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.04), 2, 0, 0, 1);
 }
-
-/* ──────────────────────────────── */
-/* 📝 Edit Button (Emoji + Label) */
+.streak-bar > .track {
+    -fx-background-color: #e5e7eb;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-padding: 0;
+}
 /* ──────────────────────────────── */
 /* 📝 Edit Button (Emoji + Label) */
 .edit-button {
-    -fx-background-color: #5b58ae;
+    -fx-background-color: #6a68b3;
     -fx-text-fill: white;
     -fx-font-weight: bold;
     -fx-background-radius: 999;
@@ -220,6 +225,7 @@
 
 .label, .habit-emoji {
     -fx-font-family: "Segoe UI Emoji", "Segoe UI", sans-serif;
+    -fx-font-size: 16px;
 }
 
 /* ──────────────────────────────── */
@@ -261,7 +267,7 @@
 .settings-button {
     -fx-background-color: transparent;
     -fx-text-fill: #4B5563;
-    -fx-font-size: 18px;
+    -fx-font-size: 16px;
     -fx-cursor: hand;
     -fx-padding: 6 12;
     -fx-border-radius: 6;

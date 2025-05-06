@@ -25,7 +25,7 @@
     <VBox spacing="6" alignment="CENTER_LEFT">
         <Label text="Choose an Emoji:" styleClass="label"/>
         <ComboBox fx:id="emojiPicker"
-                  promptText="Select an emoji"
+                  promptText="Select an emoji 🙂"
                   styleClass="combo-box">
             <items>
                 <FXCollections fx:factory="observableArrayList">
@@ -35,17 +35,16 @@
                     <String fx:value="🏃‍♀️"/>
                     <String fx:value="🧼"/>
                     <String fx:value="📝"/>
-                    <String fx:value="🚰"/>
                     <String fx:value="🍎"/>
+                    <String fx:value="💪"/>
+                    <String fx:value="🛌"/>
+                    <String fx:value="🎨"/>
+                    <String fx:value="🎸"/>
+                    <String fx:value="🎧"/>
                 </FXCollections>
             </items>
         </ComboBox>
     </VBox>
-
-    <!-- Optional emoji override -->
-    <TextField fx:id="emojiField"
-               promptText="e.g. 🧘"
-               styleClass="text-field"/>
 
     <!-- Habit Name -->
     <TextField fx:id="habitNameField"

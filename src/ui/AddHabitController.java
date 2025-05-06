@@ -13,40 +13,31 @@ import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 import model.Habit;
 
-/**
- * Controller for the Add Habit form.
- * Handles user input and adds a new habit to the main collection.
- *
- * Author: Krissy Brown
- * Date: 2025-04-24
- */
 public class AddHabitController {
-
-    // ───────────────────────────────────────────────────────────────
-    // 💬 FXML Fields
-    // ───────────────────────────────────────────────────────────────
 
     @FXML
     private TextField habitNameField;
 
     @FXML
-    private TextField emojiField; // 🆕 field for emoji entry
-    // 🆕 field for emoji entry
-    @FXML
-    private ComboBox <String> emojiPicker;
+    private TextField emojiField;
 
+    @FXML
+    private ComboBox<String> emojiPicker;
 
     @FXML
     private Label validationLabel;
 
-
-    // ───────────────────────────────────────────────────────────────
-    // 💾 Event Handlers
-    // ───────────────────────────────────────────────────────────────
+    private HabitTrackerUI dashboardController; // ✅ link to UI controller
 
     /**
-     * Handles user clicking "Save Habit".
-     * Creates a new Habit instance and closes the form if valid.
+     * Injects a reference to the dashboard controller so we can refresh it after saving.
+     */
+    public void setDashboardController(HabitTrackerUI dashboardController) {
+        this.dashboardController = dashboardController;
+    }
+
+    /**
+     * Handles saving a new habit.
      */
     @FXML
     private void handleSaveHabit() {
@@ -59,13 +50,17 @@ public class AddHabitController {
             return;
         }
 
-        Habit newHabit = new Habit(name, "", null); // Placeholder for description/category
+        Habit newHabit = new Habit(name, "", null);
         newHabit.setEmoji(selectedEmoji != null ? selectedEmoji : "🌱");
 
         try {
             Main.habitCollection.addHabit(newHabit);
 
-            // Close the window
+            // ✅ Refresh dashboard immediately
+            if (dashboardController != null) {
+                dashboardController.initialize();
+            }
+
             Stage stage = (Stage) habitNameField.getScene().getWindow();
             stage.close();
         } catch (Exception e) {
@@ -75,8 +70,7 @@ public class AddHabitController {
     }
 
     /**
-     * Handles user clicking "Cancel".
-     * Closes the form without saving.
+     * Cancels and closes the form.
      */
     @FXML
     private void handleCancel() {

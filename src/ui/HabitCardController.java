@@ -1,10 +1,7 @@
 package ui;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.ToggleButton;
+import javafx.scene.control.*;
 import model.Habit;
 
 import java.time.LocalDate;
@@ -28,8 +25,6 @@ public class HabitCardController {
     @FXML private ToggleButton doneToggle;
     @FXML private Button editButton;
     @FXML private ProgressBar streakBar;
-    @FXML private Button settingsButton;
-
 
     // ───────────────────────────────────────────────────────────────
     // 📦 Internal Data
@@ -78,17 +73,20 @@ public class HabitCardController {
         updateStreakDisplay();
     }
 
+    /**
+     * Opens the settings form in a new window.
+     */
     @FXML
     private void handleEditHabit() {
-        // Placeholder for future edit UI
-        System.out.println("Edit habit clicked: " + habit.getName());
+        // Placeholder for edit functionality
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Edit Habit");
+        alert.setHeaderText("✏️ Edit Habit");
+        alert.setContentText("Editing habits is coming soon!");
+        alert.showAndWait();
     }
 
-    @FXML
-    private void handleSettings() {
-        // Placeholder for future settings UI
-        System.out.println("⚙ Settings button clicked for habit: " + habit.getName());
-    }
+
 
     // ───────────────────────────────────────────────────────────────
     // 🔁 Helper Methods
