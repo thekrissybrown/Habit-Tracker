@@ -63,11 +63,15 @@ Future Screenshots of the application will be found in the `/media` folder, show
 ## Detailed Roles & Responsibilities
 
 ### Krissy Brown – User Interface & Integration
-- Designed and implemented the graphical user interface (GUI) using JavaFX
-- Developed `HabitTrackerUI.java` to provide a user-friendly dashboard and calendar view
-- Managed `Main.java` to handle application startup and scene switching
-- Integrated all modules into a cohesive application experience
-- Participated in UI/UX testing and documentation
+- Designed and implemented the graphical user interface (GUI) using JavaFX and FXML with SceneBuilder
+- Developed `HabitTrackerUI.java`, `HabitCardController.java`, and `AddHabitController.java` to support dynamic habit rendering, card toggles, and form interactions
+- Created and maintained custom FXML files (`dashboard.fxml`, `habitCard.fxml`, `addHabit.fxml`) with responsive layout and style integration
+- Managed `Main.java` to handle application startup, scene switching, error handling, and data lifecycle (serialization/deserialization)
+- Styled the application using `style.css` for a modern, consistent look including toggle buttons, custom alerts, and visual feedback
+- Enabled real-time UI updates on habit creation without restarting the app
+- Integrated all modules into a cohesive application experience by linking the data model, controller logic, and UI layers
+- Participated in UI/UX testing, iterative visual polish, and contributed to accessibility and usability decisions
+
 
 ### Mustafa Almajmaie – Collection Management & Persistence
 - Developed `HabitCollection.java` to manage the habit list using ArrayList with sorting/filtering
